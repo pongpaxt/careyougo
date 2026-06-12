@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>สมัครสมาชิก (ลูกค้า) — CareYouGo</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand" onclick="location.href='../index.html'" style="cursor:pointer;">CareYouGo</div>
+  <ul class="navbar-nav">
+    <li><a href="../index.html">หน้าหลัก</a></li>
+    <li><a href="browse.html">หาพนักงาน</a></li>
+    <li><a href="register.html">สมัครงาน</a></li>
+    <li><a href="about.html">เกี่ยวกับเรา</a></li>
+  </ul>
+  <div class="navbar-actions">
+    <button class="btn btn-outline-white btn-sm" onclick="location.href='login.html'">เข้าสู่ระบบ</button>
+    <div class="nav-dropdown">
+      <button class="btn btn-primary btn-sm" onclick="this.closest('.nav-dropdown').classList.toggle('open')">สมัครสมาชิก ▾</button>
+      <div class="nav-dropdown-menu">
+        <button class="nav-dropdown-item" onclick="location.href='register-customer.html'">👩‍💼 สมัครเป็นลูกค้า</button>
+        <div class="nav-dropdown-divider"></div>
+        <button class="nav-dropdown-item" onclick="location.href='register.html'">🧹 สมัครเป็นฟรีแลนซ์</button>
+      </div>
+    </div>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="register-page">
+  <div class="register-hero" style="background:linear-gradient(135deg,#1e3a8a,#1d4ed8);">
+    <div class="container">
+      <h1>สมัครสมาชิก — ลูกค้า</h1>
+      <p>สร้างบัญชีเพื่อค้นหาและว่าจ้างผู้ดูแลมืออาชีพ</p>
+    </div>
+  </div>
+
+  <div class="register-body">
+    <div class="reg-card">
+      <div class="reg-card-title">👩‍💼 ข้อมูลลูกค้า / ผู้ว่าจ้าง</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">ชื่อ <span class="req">(จำเป็น)</span></label>
+          <input class="form-input" id="c-firstname" type="text" placeholder="ชื่อจริง"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">นามสกุล <span class="req">(จำเป็น)</span></label>
+          <input class="form-input" id="c-lastname" type="text" placeholder="นามสกุล"/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">อีเมล <span class="req">(จำเป็น)</span></label>
+          <input class="form-input" id="c-email" type="email" placeholder="example@email.com"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">เบอร์โทรศัพท์ <span class="req">(จำเป็น)</span></label>
+          <input class="form-input" id="c-phone" type="tel" placeholder="08X-XXX-XXXX"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">ที่อยู่ <span class="req">(จำเป็น)</span></label>
+        <input class="form-input" id="c-addr1" type="text" placeholder="บ้านเลขที่ ถนน ซอย" style="margin-bottom:8px;"/>
+        <div class="form-row">
+          <input class="form-input" id="c-district" type="text" placeholder="แขวง/ตำบล"/>
+          <input class="form-input" id="c-amphoe" type="text" placeholder="เขต/อำเภอ"/>
+        </div>
+        <div class="form-row" style="margin-top:8px;">
+          <input class="form-input" id="c-province" type="text" placeholder="จังหวัด"/>
+          <input class="form-input" id="c-zipcode" type="text" placeholder="รหัสไปรษณีย์"/>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">รหัสผ่าน <span class="req">(จำเป็น)</span></label>
+          <input class="form-input" id="c-pw" type="password" placeholder="อย่างน้อย 8 ตัวอักษร"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">ยืนยันรหัสผ่าน <span class="req">(จำเป็น)</span></label>
+          <input class="form-input" id="c-pw2" type="password" placeholder="ยืนยันรหัสผ่าน"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">ประเภทความต้องการ</label>
+        <select class="form-select" id="c-need">
+          <option value="">-- เลือกประเภทงานที่ต้องการ --</option>
+          <option>พยาบาลดูแลที่บ้าน</option>
+          <option>พี่เลี้ยงเด็ก</option>
+          <option>ดูแลผู้สูงอายุ</option>
+          <option>แม่บ้านทั่วไป</option>
+          <option>แม่บ้านพรีเมียม</option>
+          <option>ดูแลผู้ป่วย</option>
+          <option>อื่นๆ</option>
+        </select>
+      </div>
+
+      <!-- Terms Consent -->
+      <div class="consent-box">
+        <div style="font-size:13px;font-weight:700;color:var(--gray-700);margin-bottom:10px;">📜 ข้อตกลงการใช้งาน</div>
+        <label class="consent-check">
+          <input type="checkbox" id="chk-terms-cust"/>
+          <span>ฉันได้อ่านและยอมรับ <a href="terms.html#customer" target="_blank">ข้อตกลงและเงื่อนไขการใช้บริการ (สำหรับลูกค้า/ผู้ว่าจ้าง)</a> ครบทุกข้อแล้ว</span>
+        </label>
+      </div>
+      <div id="cust-consent-error" style="color:var(--red);font-size:12px;display:none;margin-bottom:8px;">⚠️ กรุณายินยอมข้อตกลงก่อนสมัคร</div>
+
+      <button class="btn btn-primary btn-full btn-lg" onclick="submitCustomer()">✅ สมัครสมาชิกลูกค้า</button>
+      <div style="text-align:center;margin-top:14px;font-size:13px;color:var(--gray-400);">
+        มีบัญชีแล้ว? <a href="login.html" style="color:var(--blue);font-weight:600;">เข้าสู่ระบบ</a>
+        &nbsp;|&nbsp;
+        <a href="register.html" style="color:var(--gray-400);">สมัครเป็นฟรีแลนซ์แทน</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+<script>
+function toggleMenu() { document.querySelector('.navbar').classList.toggle('menu-open'); }
+
+function submitCustomer() {
+  const required = [
+    { id:'c-firstname', label:'ชื่อ' },
+    { id:'c-lastname',  label:'นามสกุล' },
+    { id:'c-email',     label:'อีเมล' },
+    { id:'c-phone',     label:'เบอร์โทรศัพท์' },
+    { id:'c-addr1',     label:'ที่อยู่' },
+    { id:'c-pw',        label:'รหัสผ่าน' },
+    { id:'c-pw2',       label:'ยืนยันรหัสผ่าน' },
+  ];
+  for (const f of required) {
+    const el = document.getElementById(f.id);
+    if (!el || !el.value.trim()) {
+      toast(`⚠️ กรุณากรอก${f.label}`); el && el.focus(); return;
+    }
+  }
+  const pw  = document.getElementById('c-pw').value;
+  const pw2 = document.getElementById('c-pw2').value;
+  if (pw.length < 8) { toast('⚠️ รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร'); return; }
+  if (pw !== pw2)    { toast('⚠️ รหัสผ่านไม่ตรงกัน'); return; }
+  if (!document.getElementById('chk-terms-cust').checked) {
+    document.getElementById('cust-consent-error').style.display = 'block'; return;
+  }
+  toast('สมัครสมาชิกสำเร็จ! 🎉 ยินดีต้อนรับสู่ CareYouGo');
+  setTimeout(() => location.href = 'login.html', 1600);
+}
+
+function toast(msg) {
+  const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2800);
+}
+</script>
+<script>document.addEventListener("click",function(e){if(!e.target.closest(".nav-dropdown")){document.querySelectorAll(".nav-dropdown.open").forEach(d=>d.classList.remove("open"));}});</script>
+</body>
+</html>

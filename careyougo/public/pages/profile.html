@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>โปรไฟล์พนักงาน — CareYouGo</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand" style="cursor:pointer;" onclick="location.href='../index.html'">CareYouGo</div>
+  <ul class="navbar-nav">
+    <li><a href="../index.html">หน้าหลัก</a></li>
+    <li><a href="browse.html" class="active">หาพนักงาน</a></li>
+    <li><a href="register.html">สมัครงาน</a></li>
+    <li><a href="about.html">เกี่ยวกับเรา</a></li>
+  </ul>
+  <div class="navbar-actions">
+    <button class="btn btn-outline-white btn-sm" onclick="location.href='login.html'">เข้าสู่ระบบ</button>
+    <div class="nav-dropdown">
+      <button class="btn btn-primary btn-sm" onclick="this.closest('.nav-dropdown').classList.toggle('open')">สมัครสมาชิก ▾</button>
+      <div class="nav-dropdown-menu">
+        <button class="nav-dropdown-item" onclick="location.href='register-customer.html'">👩‍💼 สมัครเป็นลูกค้า</button>
+        <div class="nav-dropdown-divider"></div>
+        <button class="nav-dropdown-item" onclick="location.href='register.html'">🧹 สมัครเป็นฟรีแลนซ์</button>
+      </div>
+    </div>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div style="background:var(--navy);padding:12px 0 0;">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">หน้าหลัก</a><span>›</span>
+      <a href="browse.html">ค้นหาพนักงาน</a><span>›</span>
+      <span id="breadcrumb-name">โปรไฟล์</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE LAYOUT -->
+<div class="container">
+  <div class="profile-page-layout">
+
+    <!-- Sidebar -->
+    <div class="profile-sidebar">
+      <div class="prof-avatar" id="prof-avatar">ส</div>
+      <div class="prof-verified">✓ ยืนยันแล้ว</div>
+      <div class="prof-name" id="prof-name">สมหญิง อินทรีตี</div>
+      <div class="prof-role" id="prof-role">พยาบาลวิชาชีพ</div>
+      <div class="prof-rating">
+        <span class="stars">★★★★★</span>
+        <span id="prof-rating">4.9 (46 รีวิว)</span>
+      </div>
+      <div class="prof-meta">
+        <div class="prof-meta-item">📍 กรุงเทพมหานคร</div>
+        <div class="prof-meta-item" id="prof-sub">ประสบการณ์ 5 ปี</div>
+        <div class="prof-meta-item">⏰ พร้อมเริ่มงาน</div>
+      </div>
+      <div class="prof-price" id="prof-price">฿350<span>/ชม.</span></div>
+      <div class="prof-actions">
+        <button class="btn btn-primary btn-full btn-lg" onclick="openContactModal()">นัดหมายตอนนี้</button>
+        <button class="btn btn-outline btn-full" id="save-btn" onclick="toggleSave()">♡ บันทึก</button>
+      </div>
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--gray-100);">
+        <button class="btn btn-outline-gray btn-full btn-sm" onclick="location.href='browse.html'">← กลับหาพนักงาน</button>
+      </div>
+    </div>
+
+    <!-- Main -->
+    <div class="prof-main">
+      <div class="prof-card">
+        <div class="tab-wrap">
+          <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab(this,'tab-about')">เกี่ยวกับฉัน</button>
+            <button class="tab-btn" onclick="switchTab(this,'tab-exp')">ประสบการณ์</button>
+            <button class="tab-btn" onclick="switchTab(this,'tab-reviews')">รีวิว</button>
+          </div>
+
+          <!-- About -->
+          <div id="tab-about" class="tab-pane active">
+            <p class="prof-about-text" id="prof-about">
+              สวัสดีค่ะ ฉันชื่อสมหญิง มีประสบการณ์ 5 ปีในการดูแลผู้ป่วยทั้งในโรงพยาบาลและที่บ้าน ชำนาญในการให้ยา ทำแผล ติดตามอาการ ให้กำลังใจ และดูแลด้านจิตใจ ทำงานด้วยความใส่ใจและรับผิดชอบ ยินดีทำงานทั้งกลางวันและกลางคืนค่ะ
+            </p>
+            <div class="prof-section-label">ทักษะและความเชี่ยวชาญ</div>
+            <div class="skill-list" style="margin-bottom:24px;" id="prof-skills">
+              <span class="skill-pill" style="background:var(--blue-light);color:var(--blue);">ดูแลผู้ป่วย ICU</span>
+              <span class="skill-pill" style="background:var(--blue-light);color:var(--blue);">ให้ยาทางเส้นเลือด</span>
+              <span class="skill-pill" style="background:var(--blue-light);color:var(--blue);">กายภาพบำบัด</span>
+              <span class="skill-pill">ทำแผล</span>
+              <span class="skill-pill">วัดความดัน</span>
+              <span class="skill-pill">ดูแลผู้สูงอายุ</span>
+            </div>
+            <div class="prof-section-label">ตารางว่าง</div>
+            <div class="avail-grid">
+              <div class="avail-day">จ<br/><small>Mon</small></div>
+              <div class="avail-day">อ<br/><small>Tue</small></div>
+              <div class="avail-day">พ<br/><small>Wed</small></div>
+              <div class="avail-day off">พฤ<br/><small>Thu</small></div>
+              <div class="avail-day">ศ<br/><small>Fri</small></div>
+              <div class="avail-day off">ส<br/><small>Sat</small></div>
+              <div class="avail-day off">อา<br/><small>Sun</small></div>
+            </div>
+          </div>
+
+          <!-- Experience -->
+          <div id="tab-exp" class="tab-pane">
+            <div style="display:flex;flex-direction:column;gap:20px;">
+              <div style="display:flex;gap:16px;">
+                <div style="width:44px;height:44px;border-radius:var(--r-sm);background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🏥</div>
+                <div>
+                  <div style="font-size:14px;font-weight:600;color:var(--gray-800);">พยาบาลวิชาชีพ — โรงพยาบาลจุฬา</div>
+                  <div style="font-size:12px;color:var(--gray-400);margin-bottom:4px;">2562 — 2566 (3 ปี)</div>
+                  <div style="font-size:13px;color:var(--gray-500);">ดูแลผู้ป่วยในแผนก ICU ให้ยา ทำแผล ติดตามอาการ</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:16px;">
+                <div style="width:44px;height:44px;border-radius:var(--r-sm);background:#D1FAE5;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🏠</div>
+                <div>
+                  <div style="font-size:14px;font-weight:600;color:var(--gray-800);">พยาบาลดูแลที่บ้าน — CareYouGo</div>
+                  <div style="font-size:12px;color:var(--gray-400);margin-bottom:4px;">2566 — ปัจจุบัน (2 ปี)</div>
+                  <div style="font-size:13px;color:var(--gray-500);">ดูแลผู้ป่วยและผู้สูงอายุที่บ้าน รับงานมากกว่า 40 ครั้ง</div>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:24px;">
+              <div class="prof-section-label">การศึกษา / ใบรับรอง</div>
+              <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
+                <div style="display:flex;align-items:center;gap:12px;font-size:13px;">
+                  <span style="font-size:18px;">🎓</span>
+                  <div><div style="font-weight:600;color:var(--gray-700);">ปริญญาตรี พยาบาลศาสตร์</div><div style="color:var(--gray-400);">มหาวิทยาลัยมหิดล, 2561</div></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;font-size:13px;">
+                  <span style="font-size:18px;">📜</span>
+                  <div><div style="font-weight:600;color:var(--gray-700);">ใบอนุญาตประกอบวิชาชีพพยาบาล</div><div style="color:var(--gray-400);">สภาพยาบาล, 2562</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reviews -->
+          <div id="tab-reviews" class="tab-pane">
+            <div style="display:flex;align-items:center;gap:20px;margin-bottom:24px;padding:20px;background:var(--gray-50);border-radius:var(--r-md);">
+              <div style="text-align:center;">
+                <div style="font-size:40px;font-weight:700;font-family:'Prompt',sans-serif;color:var(--gray-800);">4.9</div>
+                <div style="color:var(--amber);font-size:18px;">★★★★★</div>
+                <div style="font-size:12px;color:var(--gray-400);">46 รีวิว</div>
+              </div>
+              <div style="flex:1;">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;font-size:12px;"><span>5★</span><div style="flex:1;height:7px;background:var(--gray-200);border-radius:4px;overflow:hidden;"><div style="width:88%;height:100%;background:var(--amber);"></div></div><span style="color:var(--gray-400);">88%</span></div>
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;font-size:12px;"><span>4★</span><div style="flex:1;height:7px;background:var(--gray-200);border-radius:4px;overflow:hidden;"><div style="width:10%;height:100%;background:var(--amber);"></div></div><span style="color:var(--gray-400);">10%</span></div>
+                <div style="display:flex;align-items:center;gap:8px;font-size:12px;"><span>3★</span><div style="flex:1;height:7px;background:var(--gray-200);border-radius:4px;overflow:hidden;"><div style="width:2%;height:100%;background:var(--amber);"></div></div><span style="color:var(--gray-400);">2%</span></div>
+              </div>
+            </div>
+            <div id="reviews-list">
+              <div class="review-item"><div class="review-header"><div class="reviewer-av">👩</div><div><div class="reviewer-name">คุณนภา ก.</div><div class="reviewer-stars">★★★★★</div></div><div class="reviewer-date">5 พย. 2567</div></div><p class="review-text">บริการดีมาก ดูแลคุณแม่อย่างทะนุถนอม ให้ยาตรงเวลา ประทับใจมากค่ะ</p></div>
+              <div class="review-item"><div class="review-header"><div class="reviewer-av">👨</div><div><div class="reviewer-name">คุณประสิทธิ์ ว.</div><div class="reviewer-stars">★★★★★</div></div><div class="reviewer-date">12 ตค. 2567</div></div><p class="review-text">พยาบาลมืออาชีพ ใจเย็น อดทน ดูแลคุณพ่อได้ดีมาก จะจ้างซ้ำแน่นอนครับ</p></div>
+              <div class="review-item"><div class="review-header"><div class="reviewer-av">👩</div><div><div class="reviewer-name">คุณสมหมาย ล.</div><div class="reviewer-stars">★★★★★</div></div><div class="reviewer-date">1 กย. 2567</div></div><p class="review-text">ขอบคุณมากค่ะ ดูแลผู้ป่วยได้ดีเกินความคาดหมาย สุภาพ เป็นกันเอง ไว้ใจได้มากค่ะ</p></div>
+            </div>
+            <!-- Review form -->
+            <div style="margin-top:28px;padding-top:24px;border-top:1px solid var(--gray-100);">
+              <div style="font-size:15px;font-weight:600;color:var(--gray-800);margin-bottom:14px;">เขียนรีวิว</div>
+              <div style="display:flex;gap:6px;margin-bottom:12px;" id="star-rating">
+                <span class="star-btn" data-v="1" onclick="setStars(1)" style="font-size:24px;cursor:pointer;color:var(--gray-300);">★</span>
+                <span class="star-btn" data-v="2" onclick="setStars(2)" style="font-size:24px;cursor:pointer;color:var(--gray-300);">★</span>
+                <span class="star-btn" data-v="3" onclick="setStars(3)" style="font-size:24px;cursor:pointer;color:var(--gray-300);">★</span>
+                <span class="star-btn" data-v="4" onclick="setStars(4)" style="font-size:24px;cursor:pointer;color:var(--gray-300);">★</span>
+                <span class="star-btn" data-v="5" onclick="setStars(5)" style="font-size:24px;cursor:pointer;color:var(--gray-300);">★</span>
+              </div>
+              <textarea class="form-textarea" id="review-text" placeholder="เขียนความคิดเห็นของคุณ..." style="min-height:80px;margin-bottom:10px;"></textarea>
+              <button class="btn btn-primary" onclick="submitReview()">ส่งรีวิว</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Similar workers -->
+      <div style="margin-top:20px;">
+        <div style="font-size:16px;font-weight:600;color:var(--gray-800);margin-bottom:14px;">พนักงานที่คล้ายกัน</div>
+        <div id="similar-workers" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT MODAL -->
+<div id="contact-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:400;align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:var(--r-xl);padding:32px;max-width:440px;width:90%;position:relative;box-shadow:var(--shadow-lg);">
+    <button onclick="closeContactModal()" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--gray-400);">✕</button>
+    <div style="font-size:18px;font-weight:700;margin-bottom:4px;">📅 นัดหมาย</div>
+    <div style="font-size:13px;color:var(--gray-400);margin-bottom:20px;" id="modal-worker-name">สมหญิง อินทรีตี</div>
+    <div class="form-group"><label class="form-label">วันที่ต้องการ</label><input class="form-input" type="date" id="book-date"/></div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">เวลาเริ่ม</label><input class="form-input" type="time" value="08:00" id="book-start"/></div>
+      <div class="form-group"><label class="form-label">เวลาสิ้นสุด</label><input class="form-input" type="time" value="17:00" id="book-end"/></div>
+    </div>
+    <div class="form-group"><label class="form-label">ที่อยู่</label><input class="form-input" type="text" placeholder="บ้านเลขที่ ถนน แขวง เขต..."/></div>
+    <div class="form-group"><label class="form-label">หมายเหตุ</label><textarea class="form-textarea" style="min-height:70px;" placeholder="รายละเอียดงานเพิ่มเติม..."></textarea></div>
+    <button class="btn btn-primary btn-full btn-lg" onclick="confirmBooking()">✅ ยืนยันการนัดหมาย</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" style="margin-top:40px;">
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand">CareYouGo</div><p class="footer-desc">แพลตฟอร์มเชื่อมต่อนายจ้างกับพนักงานดูแลบ้านมืออาชีพ</p></div>
+      <div><div class="footer-col-title">บริการ</div><ul class="footer-links"><li><a href="browse.html">หาพยาบาล</a></li><li><a href="browse.html">หาพี่เลี้ยงเด็ก</a></li></ul></div>
+      <div><div class="footer-col-title">บริษัท</div><ul class="footer-links"><li><a href="#">เกี่ยวกับเรา</a></li><li><a href="#">ติดต่อเรา</a></li></ul></div>
+      <div><div class="footer-col-title">ช่วยเหลือ</div><ul class="footer-links"><li><a href="#">ศูนย์ช่วยเหลือ</a></li><li><a href="#">นโยบายความเป็นส่วนตัว</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 CareYouGo. สงวนลิขสิทธิ์</div>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+<script>
+const WORKERS_DATA = [
+  { id:1, init:'ส', name:'สมหญิง อินทรีตี', role:'พยาบาลวิชาชีพ',   sub:'ประสบการณ์ 5 ปี', rating:4.9, rcount:46,  price:350, verified:true, color:'#C7E2FF' },
+  { id:2, init:'น', name:'นารี สุโก',        role:'พี่เลี้ยงเด็ก',   sub:'ประสบการณ์ 7 ปี', rating:4.8, rcount:132, price:250, verified:true, color:'#D1FAE5' },
+  { id:3, init:'ว', name:'วีโอ กาวตี',       role:'ดูแลผู้สูงอายุ',  sub:'ประสบการณ์ 3 ปี', rating:5.0, rcount:81,  price:300, verified:true, color:'#FDE8CF' },
+  { id:4, init:'ส', name:'สดา เมฆใย',        role:'แม่บ้าน',         sub:'ประสบการณ์ 2 ปี', rating:4.7, rcount:137, price:200, verified:true, color:'#EDE9FE' },
+  { id:5, init:'พ', name:'พิมพ์รัก วิรัตน์', role:'พี่เลี้ยงเด็ก',   sub:'ประสบการณ์ 8 ปี', rating:4.9, rcount:55,  price:380, verified:true, color:'#FCE7F3' },
+  { id:6, init:'น', name:'นภา อิตี',         role:'แม่บ้านพรีเมียม', sub:'ประสบการณ์ 6 ปี', rating:4.6, rcount:70,  price:220, verified:true, color:'#DBEAFE' },
+  { id:7, init:'ก', name:'กนกวรรณ อินนาก',   role:'พยาบาล',          sub:'ประสบการณ์ 9 ปี', rating:4.9, rcount:70,  price:320, verified:true, color:'#D1FAE5' },
+  { id:8, init:'ร', name:'รัตน์ สงสยาน',     role:'แม่บ้านทั่วไป',   sub:'ประสบการณ์ 4 ปี', rating:4.8, rcount:162, price:340, verified:false,color:'#FEF3C7' },
+  { id:9, init:'อ', name:'อรุณี ไฝดี',       role:'ดูแลผู้ป่วย',     sub:'ประสบการณ์ 5 ปี', rating:4.7, rcount:135, price:210, verified:true, color:'#E0E7FF' },
+];
+
+let selectedStars = 0;
+let saved = false;
+
+function setStars(n) {
+  selectedStars = n;
+  document.querySelectorAll('.star-btn').forEach(s => {
+    s.style.color = parseInt(s.dataset.v) <= n ? 'var(--amber)' : 'var(--gray-300)';
+  });
+}
+
+function submitReview() {
+  if (!selectedStars) { toast('กรุณาให้คะแนนก่อนนะคะ ⭐'); return; }
+  const txt = document.getElementById('review-text').value.trim();
+  if (!txt) { toast('กรุณาเขียนรีวิวก่อนนะคะ'); return; }
+  const stars = '★'.repeat(selectedStars) + '☆'.repeat(5 - selectedStars);
+  const html = `<div class="review-item"><div class="review-header"><div class="reviewer-av">😊</div><div><div class="reviewer-name">คุณ (ฉัน)</div><div class="reviewer-stars">${stars}</div></div><div class="reviewer-date">วันนี้</div></div><p class="review-text">${txt}</p></div>`;
+  document.getElementById('reviews-list').insertAdjacentHTML('afterbegin', html);
+  document.getElementById('review-text').value = '';
+  setStars(0);
+  toast('ส่งรีวิวสำเร็จ! ขอบคุณค่ะ 🙏');
+}
+
+function toggleSave() {
+  saved = !saved;
+  const btn = document.getElementById('save-btn');
+  btn.textContent = saved ? '💙 บันทึกแล้ว' : '♡ บันทึก';
+  btn.className = saved ? 'btn btn-primary btn-full' : 'btn btn-outline btn-full';
+  toast(saved ? 'บันทึกในรายการโปรดแล้ว 💙' : 'ลบออกจากรายการโปรดแล้ว');
+}
+
+function openContactModal() {
+  const modal = document.getElementById('contact-modal');
+  modal.style.display = 'flex';
+  // set default date to tomorrow
+  const d = new Date(); d.setDate(d.getDate()+1);
+  document.getElementById('book-date').value = d.toISOString().split('T')[0];
+}
+function closeContactModal() { document.getElementById('contact-modal').style.display = 'none'; }
+function confirmBooking() {
+  const date = document.getElementById('book-date').value;
+  if (!date) { toast('กรุณาเลือกวันที่'); return; }
+  closeContactModal();
+  toast('ส่งคำขอนัดหมายสำเร็จ! 🎉 รอการยืนยันจากพนักงาน');
+}
+
+function switchTab(btn, paneId) {
+  const wrap = btn.closest('.tab-wrap');
+  wrap.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  wrap.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(paneId).classList.add('active');
+}
+
+function toggleMenu() { document.querySelector('.navbar').classList.toggle('menu-open'); }
+
+function loadWorker() {
+  const id = parseInt(localStorage.getItem('selectedWorker') || 1);
+  const w = WORKERS_DATA.find(x => x.id === id) || WORKERS_DATA[0];
+  document.getElementById('prof-avatar').textContent = w.init;
+  document.getElementById('prof-avatar').style.background = w.color;
+  document.getElementById('prof-name').textContent = w.name;
+  document.getElementById('prof-role').textContent = w.role;
+  document.getElementById('prof-rating').textContent = `${w.rating} (${w.rcount} รีวิว)`;
+  document.getElementById('prof-sub').textContent = w.sub;
+  document.getElementById('prof-price').innerHTML = `฿${w.price}<span>/ชม.</span>`;
+  document.getElementById('breadcrumb-name').textContent = w.name;
+  document.getElementById('modal-worker-name').textContent = w.name;
+  document.title = `${w.name} — CareYouGo`;
+
+  // Similar workers (same role, different id)
+  const similar = WORKERS_DATA.filter(x => x.id !== w.id).slice(0, 3);
+  document.getElementById('similar-workers').innerHTML = similar.map(s => `
+    <div style="background:white;border:1px solid var(--gray-200);border-radius:var(--r-md);padding:16px;cursor:pointer;transition:all .2s;text-align:center;" onclick="selectWorker(${s.id})"
+      onmouseover="this.style.boxShadow='var(--shadow-md)';this.style.borderColor='var(--blue)'"
+      onmouseout="this.style.boxShadow='';this.style.borderColor='var(--gray-200)'">
+      <div style="width:48px;height:48px;border-radius:50%;background:${s.color};display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;font-family:'Prompt',sans-serif;margin:0 auto 8px;">${s.init}</div>
+      <div style="font-size:13px;font-weight:600;color:var(--gray-800);">${s.name}</div>
+      <div style="font-size:11px;color:var(--gray-400);margin-bottom:4px;">${s.role}</div>
+      <div style="font-size:13px;font-weight:700;color:var(--navy);">฿${s.price}/ชม.</div>
+    </div>
+  `).join('');
+}
+
+function selectWorker(id) {
+  localStorage.setItem('selectedWorker', id);
+  loadWorker();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// Close modal when clicking outside
+document.getElementById('contact-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeContactModal();
+});
+
+document.addEventListener('DOMContentLoaded', loadWorker);
+</script>
+<script>document.addEventListener("click",function(e){if(!e.target.closest(".nav-dropdown")){document.querySelectorAll(".nav-dropdown.open").forEach(d=>d.classList.remove("open"));}});</script>
+</body>
+</html>

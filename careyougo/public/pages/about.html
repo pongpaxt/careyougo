@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>เกี่ยวกับเรา — CareYouGo</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand" onclick="location.href='../index.html'" style="cursor:pointer;">CareYouGo</div>
+  <ul class="navbar-nav">
+    <li><a href="../index.html">หน้าหลัก</a></li>
+    <li><a href="browse.html">หาพนักงาน</a></li>
+    <li><a href="register.html">สมัครงาน</a></li>
+    <li><a href="about.html" class="active">เกี่ยวกับเรา</a></li>
+  </ul>
+  <div class="navbar-actions">
+    <button class="btn btn-outline-white btn-sm" onclick="location.href='login.html'">เข้าสู่ระบบ</button>
+    <div class="nav-dropdown">
+      <button class="btn btn-primary btn-sm" onclick="this.closest('.nav-dropdown').classList.toggle('open')">สมัครสมาชิก ▾</button>
+      <div class="nav-dropdown-menu">
+        <button class="nav-dropdown-item" onclick="location.href='register-customer.html'">👩‍💼 สมัครเป็นลูกค้า</button>
+        <div class="nav-dropdown-divider"></div>
+        <button class="nav-dropdown-item" onclick="location.href='register.html'">🧹 สมัครเป็นฟรีแลนซ์</button>
+      </div>
+    </div>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="about-hero">
+  <h1>เกี่ยวกับ CareYouGo</h1>
+  <p>แพลตฟอร์มที่เชื่อมต่อครอบครัวกับผู้ดูแลมืออาชีพ</p>
+</div>
+
+<div class="container" style="padding-top:40px;padding-bottom:80px;">
+  <div class="about-tabs" id="about-tabs">
+    <button class="about-tab active" onclick="showAbout(this,'tab-mission')">🎯 พันธกิจ</button>
+    <button class="about-tab" onclick="showAbout(this,'tab-team')">👥 ทีมงาน</button>
+    <button class="about-tab" onclick="showAbout(this,'tab-how')">⚙️ วิธีทำงาน</button>
+    <button class="about-tab" onclick="showAbout(this,'tab-safety')">🛡️ ความปลอดภัย</button>
+    <button class="about-tab" onclick="showAbout(this,'tab-terms')">📜 ข้อตกลงการใช้งาน</button>
+  </div>
+
+  <!-- ===== พันธกิจ ===== -->
+  <div id="tab-mission" class="about-pane active">
+    <div style="max-width:720px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:40px;">
+        <div style="font-size:60px;margin-bottom:16px;">🏠</div>
+        <h2 style="font-size:28px;color:var(--navy);margin-bottom:12px;">พันธกิจของเรา</h2>
+        <p style="font-size:15px;color:var(--gray-500);line-height:1.8;">CareYouGo เกิดขึ้นจากความเชื่อที่ว่า ทุกครอบครัวสมควรได้รับการดูแลจากผู้เชี่ยวชาญที่ไว้ใจได้ และผู้ดูแลทุกคนสมควรได้รับโอกาสทำงานที่มีเกียรติและมั่นคง</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div style="background:var(--blue-light);border-radius:var(--r-lg);padding:24px;text-align:center;">
+          <div style="font-size:36px;margin-bottom:10px;">❤️</div>
+          <div style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:6px;">ใส่ใจ</div>
+          <div style="font-size:13px;color:var(--gray-500);">ดูแลผู้รับบริการเหมือนคนในครอบครัว</div>
+        </div>
+        <div style="background:#D1FAE5;border-radius:var(--r-lg);padding:24px;text-align:center;">
+          <div style="font-size:36px;margin-bottom:10px;">🔒</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gray-800);margin-bottom:6px;">เชื่อถือได้</div>
+          <div style="font-size:13px;color:var(--gray-500);">ตรวจสอบประวัติทุกคนก่อนรับเข้าระบบ</div>
+        </div>
+        <div style="background:#FEF3C7;border-radius:var(--r-lg);padding:24px;text-align:center;">
+          <div style="font-size:36px;margin-bottom:10px;">⭐</div>
+          <div style="font-size:15px;font-weight:700;color:var(--gray-800);margin-bottom:6px;">มืออาชีพ</div>
+          <div style="font-size:13px;color:var(--gray-500);">พนักงานผ่านการอบรมและมีประสบการณ์</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ทีมงาน ===== -->
+  <div id="tab-team" class="about-pane">
+    <div style="max-width:720px;margin:0 auto;text-align:center;">
+      <h2 style="font-size:26px;color:var(--navy);margin-bottom:8px;">ทีมผู้ก่อตั้ง</h2>
+      <p style="color:var(--gray-400);margin-bottom:36px;">ทีมงานที่มีความหลงใหลในการพัฒนาคุณภาพชีวิตผู้สูงอายุ</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+        <div style="background:white;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:24px;">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px;">👩</div>
+          <div style="font-weight:700;color:var(--gray-800);">คุณวรรณา ศ.</div>
+          <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">CEO & Co-Founder</div>
+          <div style="font-size:12px;color:var(--gray-500);">ประสบการณ์ด้านสุขภาพ 10+ ปี</div>
+        </div>
+        <div style="background:white;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:24px;">
+          <div style="width:64px;height:64px;border-radius:50%;background:#D1FAE5;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px;">👨</div>
+          <div style="font-weight:700;color:var(--gray-800);">คุณสมชาย ป.</div>
+          <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">CTO & Co-Founder</div>
+          <div style="font-size:12px;color:var(--gray-500);">ผู้เชี่ยวชาญด้าน Tech Startup</div>
+        </div>
+        <div style="background:white;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:24px;">
+          <div style="width:64px;height:64px;border-radius:50%;background:#FDE8CF;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 12px;">👩</div>
+          <div style="font-weight:700;color:var(--gray-800);">คุณนภาพร ก.</div>
+          <div style="font-size:12px;color:var(--gray-400);margin-bottom:8px;">Head of Operations</div>
+          <div style="font-size:12px;color:var(--gray-500);">ดูแลคุณภาพและมาตรฐานบริการ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== วิธีทำงาน ===== -->
+  <div id="tab-how" class="about-pane">
+    <div style="max-width:640px;margin:0 auto;">
+      <h2 style="font-size:26px;color:var(--navy);margin-bottom:24px;text-align:center;">เราทำงานอย่างไร?</h2>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:44px;height:44px;background:var(--blue-btn);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:16px;flex-shrink:0;">1</div>
+          <div><div style="font-weight:700;color:var(--gray-800);margin-bottom:4px;">ตรวจสอบผู้สมัคร</div><div style="font-size:13px;color:var(--gray-500);">เราตรวจสอบประวัติอาชญากรรม เอกสาร และสัมภาษณ์ผู้สมัครทุกคนก่อนเข้าระบบ</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:44px;height:44px;background:var(--blue-btn);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:16px;flex-shrink:0;">2</div>
+          <div><div style="font-weight:700;color:var(--gray-800);margin-bottom:4px;">จับคู่อัจฉริยะ</div><div style="font-size:13px;color:var(--gray-500);">ระบบจับคู่ผู้ดูแลที่เหมาะสมกับความต้องการของลูกค้าแต่ละราย</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:44px;height:44px;background:var(--blue-btn);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:16px;flex-shrink:0;">3</div>
+          <div><div style="font-weight:700;color:var(--gray-800);margin-bottom:4px;">ติดตามคุณภาพ</div><div style="font-size:13px;color:var(--gray-500);">ระบบรีวิวและให้คะแนนจากผู้ใช้จริงทุกครั้งหลังงาน</div></div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:flex-start;">
+          <div style="width:44px;height:44px;background:var(--blue-btn);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:16px;flex-shrink:0;">4</div>
+          <div><div style="font-weight:700;color:var(--gray-800);margin-bottom:4px;">ชำระเงินปลอดภัย</div><div style="font-size:13px;color:var(--gray-500);">ระบบ Escrow ป้องกันการโกง เงินจ่ายเมื่องานสำเร็จเท่านั้น</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ความปลอดภัย ===== -->
+  <div id="tab-safety" class="about-pane">
+    <div style="max-width:720px;margin:0 auto;">
+      <h2 style="font-size:26px;color:var(--navy);margin-bottom:8px;text-align:center;">ความปลอดภัยคือสิ่งสำคัญที่สุด</h2>
+      <p style="color:var(--gray-400);text-align:center;margin-bottom:32px;">ทุกขั้นตอนออกแบบมาเพื่อให้คุณวางใจได้ 100%</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="background:white;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:20px;">
+          <div style="font-size:28px;margin-bottom:10px;">🔍</div>
+          <div style="font-weight:700;margin-bottom:6px;">ตรวจประวัติอาชญากรรม</div>
+          <div style="font-size:13px;color:var(--gray-500);">ตรวจสอบจากกรมตำรวจก่อนรับสมัครทุกคน</div>
+        </div>
+        <div style="background:white;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:20px;">
+          <div style="font-size:28px;margin-bottom:10px;">🪪</div>
+          <div style="font-weight:700;margin-bottom:6px;">ยืนยันตัวตน</div>
+          <div style="font-size:13px;color:var(--gray-500);">ตรวจสอบบัตรประชาชนและทะเบียนบ้านทุกคน</div>
+        </div>
+        <div style="background:white;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:20px;">
+          <div style="font-size:28px;margin-bottom:10px;">🏥</div>
+          <div style="font-weight:700;margin-bottom:6px;">ตรวจสุขภาพ</div>
+          <div style="font-size:13px;color:var(--gray-500);">ใบรับรองสุขภาพไม่เกิน 6 เดือน</div>
+        </div>
+        <div style="background:white;border:1px solid var(--gray-200);border-radius:var(--r-lg);padding:20px;">
+          <div style="font-size:28px;margin-bottom:10px;">⭐</div>
+          <div style="font-weight:700;margin-bottom:6px;">รีวิวจากผู้ใช้จริง</div>
+          <div style="font-size:13px;color:var(--gray-500);">ไม่มีรีวิวปลอม ทุกคะแนนมาจากงานจริง</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ข้อตกลงการใช้งาน ===== -->
+  <div id="tab-terms" class="about-pane">
+    <div style="max-width:640px;margin:0 auto;text-align:center;">
+      <div style="font-size:56px;margin-bottom:16px;">📜</div>
+      <h2 style="font-size:26px;color:var(--navy);margin-bottom:12px;">ข้อตกลงการใช้งาน</h2>
+      <p style="font-size:14px;color:var(--gray-500);margin-bottom:32px;line-height:1.8;">CareYouGo มีข้อตกลงการใช้งาน 2 ฉบับ สำหรับผู้ใช้งานแต่ละประเภท โปรดอ่านข้อตกลงที่เกี่ยวข้องกับคุณก่อนใช้งานแพลตฟอร์ม</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px;">
+        <a href="terms.html#customer" style="background:var(--navy);color:white;border-radius:var(--r-lg);padding:28px 20px;text-align:center;display:block;transition:all .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+          <div style="font-size:40px;margin-bottom:12px;">👩‍💼</div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px;">ข้อตกลงสำหรับลูกค้า</div>
+          <div style="font-size:12px;opacity:.75;">ผู้ว่าจ้าง / ครอบครัว</div>
+          <div style="margin-top:14px;font-size:12px;font-weight:600;background:rgba(255,255,255,.15);padding:6px 14px;border-radius:9999px;display:inline-block;">อ่านข้อตกลง →</div>
+        </a>
+        <a href="terms.html#freelance" style="background:var(--green);color:white;border-radius:var(--r-lg);padding:28px 20px;text-align:center;display:block;transition:all .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+          <div style="font-size:40px;margin-bottom:12px;">🧹</div>
+          <div style="font-size:15px;font-weight:700;margin-bottom:6px;">ข้อตกลงสำหรับฟรีแลนซ์</div>
+          <div style="font-size:12px;opacity:.75;">ผู้ให้บริการ / ผู้ดูแล</div>
+          <div style="margin-top:14px;font-size:12px;font-weight:600;background:rgba(255,255,255,.15);padding:6px 14px;border-radius:9999px;display:inline-block;">อ่านข้อตกลง →</div>
+        </a>
+      </div>
+      <div style="background:#FFF7ED;border:1px solid #FDE68A;border-radius:var(--r-md);padding:16px;font-size:13px;color:#92400E;">
+        ⚠️ การสมัครสมาชิกหรือใช้งานแพลตฟอร์ม CareYouGo ถือว่าคุณได้อ่านและยอมรับข้อตกลงทั้งหมดแล้ว
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand">CareYouGo</div><p class="footer-desc">แพลตฟอร์มเชื่อมต่อนายจ้างกับพนักงานดูแลบ้านมืออาชีพ</p></div>
+      <div><div class="footer-col-title">บริการ</div><ul class="footer-links"><li><a href="browse.html">หาพยาบาล</a></li><li><a href="browse.html">หาพี่เลี้ยงเด็ก</a></li></ul></div>
+      <div><div class="footer-col-title">บริษัท</div><ul class="footer-links"><li><a href="about.html">เกี่ยวกับเรา</a></li><li><a href="terms.html">ข้อตกลง</a></li></ul></div>
+      <div><div class="footer-col-title">ช่วยเหลือ</div><ul class="footer-links"><li><a href="#">ศูนย์ช่วยเหลือ</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 CareYouGo. สงวนลิขสิทธิ์</div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() { document.querySelector('.navbar').classList.toggle('menu-open'); }
+function showAbout(btn, paneId) {
+  document.querySelectorAll('.about-tab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.about-pane').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(paneId).classList.add('active');
+}
+</script>
+<script>document.addEventListener("click",function(e){if(!e.target.closest(".nav-dropdown")){document.querySelectorAll(".nav-dropdown.open").forEach(d=>d.classList.remove("open"));}});</script>
+</body>
+</html>

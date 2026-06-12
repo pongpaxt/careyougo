@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ข้อตกลงการใช้งาน — CareYouGo</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand" onclick="location.href='../index.html'" style="cursor:pointer;">CareYouGo</div>
+  <ul class="navbar-nav">
+    <li><a href="../index.html">หน้าหลัก</a></li>
+    <li><a href="browse.html">หาพนักงาน</a></li>
+    <li><a href="register.html">สมัครงาน</a></li>
+    <li><a href="about.html">เกี่ยวกับเรา</a></li>
+  </ul>
+  <div class="navbar-actions">
+    <button class="btn btn-outline-white btn-sm" onclick="location.href='login.html'">เข้าสู่ระบบ</button>
+    <div class="nav-dropdown">
+      <button class="btn btn-primary btn-sm" onclick="this.closest('.nav-dropdown').classList.toggle('open')">สมัครสมาชิก ▾</button>
+      <div class="nav-dropdown-menu">
+        <button class="nav-dropdown-item" onclick="location.href='register-customer.html'">👩‍💼 สมัครเป็นลูกค้า</button>
+        <div class="nav-dropdown-divider"></div>
+        <button class="nav-dropdown-item" onclick="location.href='register.html'">🧹 สมัครเป็นฟรีแลนซ์</button>
+      </div>
+    </div>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div style="background:linear-gradient(135deg,var(--navy-dark),var(--navy-mid));padding:48px 0;color:white;text-align:center;">
+  <div class="container">
+    <div style="font-size:40px;margin-bottom:12px;">📜</div>
+    <h1 style="font-size:30px;font-weight:700;margin-bottom:8px;">ข้อตกลงและเงื่อนไขการใช้งาน</h1>
+    <p style="font-size:14px;opacity:.7;">CareYouGo — โปรดอ่านข้อตกลงให้ครบถ้วนก่อนใช้งานแพลตฟอร์ม</p>
+    <div style="display:flex;justify-content:center;gap:12px;margin-top:20px;flex-wrap:wrap;">
+      <a href="#customer" style="background:rgba(255,255,255,0.15);color:white;padding:8px 20px;border-radius:9999px;font-size:13px;font-weight:600;border:1px solid rgba(255,255,255,0.3);">📋 สำหรับลูกค้า/ผู้ว่าจ้าง</a>
+      <a href="#freelance" style="background:rgba(255,255,255,0.15);color:white;padding:8px 20px;border-radius:9999px;font-size:13px;font-weight:600;border:1px solid rgba(255,255,255,0.3);">🧹 สำหรับฟรีแลนซ์/ผู้ให้บริการ</a>
+    </div>
+  </div>
+</div>
+
+<div class="terms-body">
+
+  <!-- ===================== ลูกค้า ===================== -->
+  <div id="customer" style="scroll-margin-top:80px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--navy);">
+      <div style="width:48px;height:48px;background:var(--navy);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">📋</div>
+      <div>
+        <div style="font-size:18px;font-weight:700;color:var(--navy);">ข้อตกลงและเงื่อนไขการใช้บริการ</div>
+        <div style="font-size:13px;color:var(--gray-400);">สำหรับลูกค้า / ผู้ว่าจ้าง</div>
+      </div>
+    </div>
+
+    <div style="font-size:13px;color:var(--gray-600);line-height:1.9;margin-bottom:20px;background:var(--gray-50);border-radius:var(--r-md);padding:16px;">
+      ข้อตกลงฉบับนี้ทำขึ้นระหว่าง <strong>CareYouGo</strong> (ซึ่งต่อไปในข้อตกลงนี้จะเรียกว่า "บริษัท") ฝ่ายหนึ่ง กับ ผู้ใช้บริการจ้างดูแลผู้สูงอายุ (ซึ่งต่อไปในข้อตกลงนี้จะเรียกว่า "ผู้ว่าจ้าง") อีกฝ่ายหนึ่ง โดยผู้ว่าจ้างตกลงยอมรับและปฏิบัติตามเงื่อนไขข้อบังคับทางกฎหมาย ดังต่อไปนี้:
+    </div>
+
+    <div class="terms-section">
+      <div class="terms-section-title">1. สถานะของบริษัทและการจำกัดความรับผิดชอบ (Limitation of Liability)</div>
+      <div class="terms-item">
+        <div class="terms-item-body">ผู้ว่าจ้างรับทราบและตกลงว่า บริษัทเป็นเพียง "ผู้ให้บริการแพลตฟอร์ม/ตัวกลาง" ในการคัดกรองประวัติเบื้องต้นและจับคู่ระหว่างผู้ว่าจ้างกับพี่เลี้ยง (ซึ่งมีสถานะเป็นผู้รับจ้างอิสระ/ฟรีแลนซ์) เท่านั้น บริษัทไม่ใช่นายจ้างของพี่เลี้ยง</div>
+      </div>
+      <div class="terms-item">
+        <div class="terms-warning">บริษัท จะไม่รับผิดชอบต่อความสูญเสีย ความเสียหาย อุบัติเหตุ การบาดเจ็บ การเสียชีวิต หรือการสูญหายของทรัพย์สินใดๆ ทั้งสิ้น ที่เกิดขึ้นระหว่างการปฏิบัติงานของพี่เลี้ยง ไม่ว่าจะเกิดจากความประมาทเลินเล่อหรือการกระทำโดยเจตนาของพี่เลี้ยงก็ตาม ผู้ว่าจ้างตกลงจะเรียกร้องความเสียหายจากตัวพี่เลี้ยงโดยตรง</div>
+      </div>
+    </div>
+
+    <div class="terms-section">
+      <div class="terms-section-title">2. การคัดกรองประวัติและการตัดสินใจเลือก</div>
+      <div class="terms-item">
+        <div class="terms-item-body">บริษัทได้ทำหน้าที่คัดกรองประวัติอาชญากรรมและข้อมูลเบื้องต้นของพี่เลี้ยงตามมาตรฐานของบริษัทแล้ว อย่างไรก็ตาม ผู้ว่าจ้างมีหน้าที่ในการตรวจสอบ สัมภาษณ์ และใช้วิจารณญาณส่วนตัวในการตัดสินใจเลือกจ้างพี่เลี้ยงด้วยตนเอง บริษัทไม่ได้ให้การรับประกันพฤติกรรมหรือประสิทธิภาพการทำงานของพี่เลี้ยงในอนาคต</div>
+      </div>
+    </div>
+
+    <div class="terms-section">
+      <div class="terms-section-title">3. ข้อห้ามในการติดต่อและจ้างงานนอกระบบ (Non-Circumvention)</div>
+      <div class="terms-item">
+        <div class="terms-item-body">ผู้ว่าจ้าง ห้ามเสนอจ้างงาน แลกเปลี่ยนข้อมูลติดต่อส่วนตัว หรือชำระเงินค่าบริการให้แก่พี่เลี้ยงโดยตรงโดยไม่ผ่านระบบของบริษัทเด็ดขาด</div>
+      </div>
+      <div class="terms-item">
+        <div class="terms-warning">หากตรวจพบว่าผู้ว่าจ้างทำการจ้างงานนอกระบบกับพี่เลี้ยงที่รู้จักผ่านแพลตฟอร์มนี้ บริษัทมีสิทธิ์ระงับการใช้บริการและปิดบัญชีผู้ใช้ของผู้ว่าจ้างทันที และบริษัทมีสิทธิ์เรียกค่าปรับทางแพ่งเป็นจำนวนเงิน <strong>10,000 – 50,000 บาท</strong> ต่อกรณี</div>
+      </div>
+    </div>
+
+    <div class="terms-section">
+      <div class="terms-section-title">4. ความปลอดภัยและการดูแลพี่เลี้ยง</div>
+      <div class="terms-item">
+        <div class="terms-item-body">ผู้ว่าจ้างตกลงจะจัดเตรียมสถานที่ปฏิบัติงานให้มีความปลอดภัยและถูกสุขอนามัย และตกลงจะไม่ปฏิบัติต่อพี่เลี้ยงในลักษณะที่ละเมิดกฎหมาย กระทบต่อความเป็นมนุษย์ หรือก่อให้เกิดอันตรายต่อร่างกายและจิตใจของพี่เลี้ยง</div>
+      </div>
+    </div>
+
+    <div class="terms-section">
+      <div class="terms-section-title">5. นโยบายการยกเลิกและการคืนเงิน</div>
+      <div class="terms-item">
+        <div class="terms-item-body">การยกเลิกงาน การเปลี่ยนตัวพี่เลี้ยง หรือการขอคืนเงิน ต้องเป็นไปตามเงื่อนไขและระยะเวลาที่บริษัทกำหนดไว้ในระบบเท่านั้น</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="height:32px;"></div>
+
+  <!-- ===================== ฟรีแลนซ์ ===================== -->
+  <div id="freelance" style="scroll-margin-top:80px;">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid var(--green);">
+      <div style="width:48px;height:48px;background:var(--green);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;">🧹</div>
+      <div>
+        <div style="font-size:18px;font-weight:700;color:var(--gray-800);">ข้อตกลงและเงื่อนไขการสมัครเข้าร่วมเป็นผู้ให้บริการอิสระ</div>
+        <div style="font-size:13px;color:var(--gray-400);">สำหรับฟรีแลนซ์ / ผู้ให้บริการ</div>
+      </div>
+    </div>
+
+    <div style="font-size:13px;color:var(--gray-600);line-height:1.9;margin-bottom:20px;background:var(--gray-50);border-radius:var(--r-md);padding:16px;">
+      ข้อตกลงฉบับนี้ทำขึ้นระหว่าง <strong>CareYouGo</strong> (ซึ่งต่อไปในข้อตกลงนี้จะเรียกว่า "บริษัท") ฝ่ายหนึ่ง กับ ผู้สมัครเข้าร่วมเป็นผู้ให้บริการดูแลผู้สูงอายุ (ซึ่งต่อไปในข้อตกลงนี้จะเรียกว่า "ผู้ให้บริการ") อีกฝ่ายหนึ่ง โดยผู้ให้บริการตกลงยอมรับและปฏิบัติตามเงื่อนไขข้อบังคับทางกฎหมาย ดังต่อไปนี้:
+    </div>
+
+    <div class="terms-section">
+      <div class="terms-section-title">1. สถานะทางกฎหมายและการเป็นคู่สัญญาอิสระ (Independent Contractor)</div>
+      <div class="terms-item">
+        <div class="terms-item-body">ผู้ให้บริการยอมรับและเข้าใจเป็นอย่างดีว่า ความสัมพันธ์ระหว่างบริษัทและผู้ให้บริการ ไม่ใช่ความสัมพันธ์ในฐานะนายจ้างและลูกจ้างตามกฎหมายแรงงาน และไม่ใช่หุ้นส่วนทางธุรกิจ</div>
+      </div>
+      <div class="terms-item">
+        <div class="terms-highlight">ผู้ให้บริการมีสถานะเป็น "ผู้รับจ้างอิสระ (Freelance)" เท่านั้น มีอิสระในการเลือกรับหรือปฏิเสธงาน และไม่มีสิทธิ์เรียกร้องค่าจ้างขั้นต่ำ ค่าล่วงเวลา สวัสดิการ หรือเงินชดเชยใดๆ จากบริษัท</div>
+      </div>
+    </div>
+
+    <div class="terms-section">
+      <div class="terms-section-title">2. การจำกัดความรับผิดของบริษัท (Limitation of Liability)</div>
+      <div class="terms-item">
+        <div class="terms-item-body">บริษัททำหน้าที่เป็นเพียง "ตัวกลาง/ระบบแพลตฟอร์ม" ในการคัดกรอง แนะนำ และจับคู่ระหว่างผู้ให้บริการกับผู้ว่าจ้าง (ลูกค้า) เท่านั้น</div>
+      </div>
+      <div class="terms-item">
+        <div class="terms-warning">บริษัท จะไม่รับผิดชอบต่อความเสียหายใดๆ ทั้งสิ้น ไม่ว่าจะเป็นความเสียหายต่อชีวิต ร่างกาย จิตใจ อนามัย หรือทรัพย์สิน ของทั้งตัวผู้ให้บริการ ตัวผู้สูงอายุหรือบุคคลภายนอก อันเกิดจากการปฏิบัติงาน การกระทำโดยเจตนา หรือความประมาทเลินเล่อของผู้ให้บริการ</div>
+      </div>
+    </div>
+
+    <div class="terms-section">
+      <div class="terms-section-title">3. ข้อตกลงการชดใช้ค่าเสียหาย (Indemnification)</div>
+      <div class="terms-item">
+        <div class="terms-item-body">หากผู้ให้บริการก่อให้เกิดความเสียหาย ขโมยทรัพย์สิน ทำร้ายร่างกาย หรือละเมิดต่อผู้สูงอายุและครอบครัวของผู้ว่าจ้าง จนเป็นเหตุให้บริษัทถูกฟ้องร้อง เรียกค่าเสียหาย หรือดำเนินคดีทางกฎหมาย <strong>ผู้ให้บริการตกลงจะเป็นผู้รับผิดชอบชดใช้ค่าเสียหาย ค่าปรับ ค่าใช้จ่ายในการดำเนินคดี และค่าทนายความทั้งหมดให้แก่บริษัทและผู้ได้รับความเสียหายแต่เพียงผู้เดียว</strong></div>
+      </div>
+    </div>
+
+    <div class="terms-section">
+      <div class="terms-section-title">4. การยินยอมให้ตรวจสอบประวัติและความถูกต้องของข้อมูล</div>
+      <div class="terms-item">
+        <div class="terms-item-body">ผู้ให้บริการยินยอมให้บริษัททำการตรวจสอบประวัติอาชญากรรม ประวัติการทำงาน และข้อมูลส่วนบุคคลอื่นๆ เพื่อความปลอดภัยของผู้บริโภค</div>
+      </div>
+      <div class="terms-item">
+        <div class="terms-warning">หากบริษัทตรวจพบว่าผู้ให้บริการให้ข้อมูลเท็จ หรือมีประวัติอาชญากรรมร้ายแรง (เช่น คดีเกี่ยวกับทรัพย์ ทำร้ายร่างกาย หรือคดีทางเพศ) บริษัทมีสิทธิ์ปฏิเสธการรับสมัคร หรือยกเลิกบัญชีผู้ใช้งานทันทีโดยไม่ต้องแจ้งให้ทราบล่วงหน้า และไม่ต้องจ่ายค่าชดเชยใดๆ</div>
+      </div>
+    </div>
+
+    <div class="terms-section">
+      <div class="terms-section-title">5. การคุ้มครองข้อมูลส่วนบุคคล (PDPA)</div>
+      <div class="terms-item">
+        <div class="terms-item-body">ผู้ให้บริการยินยอมให้บริษัท เก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคล (รวมถึงข้อมูลชีวมิติ บัตรประชาชน และประวัติอาชญากรรม) เพื่อวัตถุประสงค์ในการยืนยันตัวตน ตรวจสอบคุณสมบัติ และแสดงข้อมูลดังกล่าวให้แก่ผู้ว่าจ้าง (ลูกค้า) เพื่อประกอบการตัดสินใจจ้างงาน</div>
+      </div>
+    </div>
+
+    <div class="terms-section">
+      <div class="terms-section-title">6. การรักษาความลับและการห้ามรับงานนอกระบบ (Non-Circumvention)</div>
+      <div class="terms-item">
+        <div class="terms-item-body">ผู้ให้บริการจะต้องรักษาความลับ ข้อมูลส่วนตัว ข้อมูลทางการแพทย์ และที่อยู่ของผู้สูงอายุและผู้ว่าจ้างอย่างเคร่งครัด ห้ามนำไปเผยแพร่ต่อบุคคลภายนอก</div>
+      </div>
+      <div class="terms-item">
+        <div class="terms-warning">ผู้ให้บริการ ห้ามแลกเปลี่ยนช่องทางการติดต่อส่วนตัว เพื่อรับงานหรือรับเงินโดยตรงจากผู้ว่าจ้างที่รู้จักผ่านระบบของบริษัทโดยเด็ดขาด (ห้ามดีลนอกระบบ) หากตรวจพบ บริษัทมีสิทธิ์ระงับสัญญาณการให้บริการทันที และผู้ให้บริการตกลงจะเบี้ยปรับให้แก่บริษัทเป็นจำนวนเงิน <strong>10,000 – 50,000 บาท</strong> ต่อกรณี</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back buttons -->
+  <div style="display:flex;gap:12px;justify-content:center;margin-top:40px;flex-wrap:wrap;">
+    <a href="register-customer.html" class="btn btn-outline btn-lg">← กลับไปสมัครลูกค้า</a>
+    <a href="register.html" class="btn btn-primary btn-lg">← กลับไปสมัครฟรีแลนซ์</a>
+  </div>
+</div>
+
+<footer class="footer" style="margin-top:40px;">
+  <div class="container">
+    <div class="footer-bottom">© 2025 CareYouGo. สงวนลิขสิทธิ์ — ข้อตกลงและเงื่อนไขการใช้งาน</div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() { document.querySelector('.navbar').classList.toggle('menu-open'); }
+</script>
+<script>document.addEventListener("click",function(e){if(!e.target.closest(".nav-dropdown")){document.querySelectorAll(".nav-dropdown.open").forEach(d=>d.classList.remove("open"));}});</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>เข้าสู่ระบบ — CareYouGo</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand" onclick="location.href='../index.html'" style="cursor:pointer;">CareYouGo</div>
+  <ul class="navbar-nav">
+    <li><a href="../index.html">หน้าหลัก</a></li>
+    <li><a href="browse.html">หาพนักงาน</a></li>
+    <li><a href="register.html">สมัครงาน</a></li>
+    <li><a href="about.html">เกี่ยวกับเรา</a></li>
+  </ul>
+  <div class="navbar-actions">
+    <button class="btn btn-outline-white btn-sm" onclick="location.href='login.html'">เข้าสู่ระบบ</button>
+    <div class="nav-dropdown">
+      <button class="btn btn-primary btn-sm" onclick="this.closest('.nav-dropdown').classList.toggle('open')">สมัครสมาชิก ▾</button>
+      <div class="nav-dropdown-menu">
+        <button class="nav-dropdown-item" onclick="location.href='register-customer.html'">👩‍💼 สมัครเป็นลูกค้า</button>
+        <div class="nav-dropdown-divider"></div>
+        <button class="nav-dropdown-item" onclick="location.href='register.html'">🧹 สมัครเป็นฟรีแลนซ์</button>
+      </div>
+    </div>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="auth-page">
+  <div class="auth-card">
+    <div class="auth-site-name">CareYouGo</div>
+    <div class="auth-site-sub">Connect Worker &amp; Find a Home</div>
+    <div class="auth-title">เข้าสู่ระบบ</div>
+
+    <div class="form-group">
+      <label class="form-label">อีเมล</label>
+      <input class="form-input" type="email" placeholder="example@email.com"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label">รหัสผ่าน</label>
+      <input class="form-input" type="password" placeholder="••••••••"/>
+      <div style="text-align:right;margin-top:5px;"><a class="form-link">ลืมรหัสผ่าน?</a></div>
+    </div>
+
+    <button class="btn btn-primary btn-full btn-lg" style="margin-bottom:16px;"
+      onclick="toast('เข้าสู่ระบบสำเร็จ! 🎉');setTimeout(()=>location.href='profile.html',1000)">
+      เข้าสู่ระบบ
+    </button>
+
+    <div style="text-align:center;font-size:13px;color:var(--gray-400);margin-bottom:16px;">หรือเข้าสู่ระบบด้วย</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
+      <button class="btn btn-outline-gray" onclick="toast('กำลังเชื่อมต่อ Google...')">🌐 Google</button>
+      <button class="btn btn-outline-gray" onclick="toast('กำลังเชื่อมต่อ Facebook...')">📘 Facebook</button>
+    </div>
+
+    <div style="text-align:center;font-size:13px;color:var(--gray-500);">
+      ยังไม่มีบัญชี? <a class="form-link" href="register.html">สมัครสมาชิกฟรี</a>
+    </div>
+    <div style="text-align:center;margin-top:14px;">
+      <a href="../index.html" style="font-size:12px;color:var(--gray-400);">← กลับหน้าแรก</a>
+    </div>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+<script>function toggleMenu(){document.querySelector(".navbar").classList.toggle("menu-open");}</script>
+</body>
+</html>

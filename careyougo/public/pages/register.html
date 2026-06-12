@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>สมัครเป็นฟรีแลนซ์ — CareYouGo</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand" onclick="location.href='../index.html'" style="cursor:pointer;">CareYouGo</div>
+  <ul class="navbar-nav">
+    <li><a href="../index.html">หน้าหลัก</a></li>
+    <li><a href="browse.html">หาพนักงาน</a></li>
+    <li><a href="register.html" class="active">สมัครงาน</a></li>
+    <li><a href="about.html">เกี่ยวกับเรา</a></li>
+  </ul>
+  <div class="navbar-actions">
+    <button class="btn btn-outline-white btn-sm" onclick="location.href='login.html'">เข้าสู่ระบบ</button>
+    <div class="nav-dropdown">
+      <button class="btn btn-primary btn-sm" onclick="this.closest('.nav-dropdown').classList.toggle('open')">สมัครสมาชิก ▾</button>
+      <div class="nav-dropdown-menu">
+        <button class="nav-dropdown-item" onclick="location.href='register-customer.html'">👩‍💼 สมัครเป็นลูกค้า</button>
+        <div class="nav-dropdown-divider"></div>
+        <button class="nav-dropdown-item" onclick="location.href='register.html'">🧹 สมัครเป็นฟรีแลนซ์</button>
+      </div>
+    </div>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="register-page">
+  <div class="register-hero">
+    <div class="container">
+      <h1>สมัครเป็นฟรีแลนซ์</h1>
+      <p>เริ่มต้นสร้างรายได้กับเรา ทำงานตามเวลาของคุณ</p>
+    </div>
+  </div>
+
+  <div class="register-body">
+    <!-- Step indicator -->
+    <div class="step-indicator">
+      <div class="si-dot active" id="si-1">1</div>
+      <div class="si-line" id="sl-1"></div>
+      <div class="si-dot" id="si-2">2</div>
+      <div class="si-line" id="sl-2"></div>
+      <div class="si-dot" id="si-3">3</div>
+      <div class="si-line" id="sl-3"></div>
+      <div class="si-dot" id="si-4">4</div>
+    </div>
+    <div class="si-labels">
+      <span class="si-label active" id="slbl-1">ข้อมูลส่วนตัว</span>
+      <span class="si-label" id="slbl-2">ทักษะ</span>
+      <span class="si-label" id="slbl-3">เอกสาร</span>
+      <span class="si-label" id="slbl-4">ยืนยัน</span>
+    </div>
+
+    <!-- ===== STEP 1: ข้อมูลส่วนตัว ===== -->
+    <div id="reg-step-1" class="reg-card">
+      <div class="reg-card-title">ข้อมูลส่วนตัว</div>
+
+      <div class="avatar-upload">
+        <div class="avatar-circle" onclick="toast('เลือกรูปภาพ...')">📷</div>
+        <div class="avatar-upload-label">อัปโหลดรูปโปรไฟล์</div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">ชื่อ <span class="req">(จำเป็น)</span></label>
+          <input class="form-input" id="f-firstname" type="text" placeholder="ชื่อจริง"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">นามสกุล <span class="req">(จำเป็น)</span></label>
+          <input class="form-input" id="f-lastname" type="text" placeholder="นามสกุล"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">อายุ <span class="req">(จำเป็น)</span></label>
+        <input class="form-input" id="f-age" type="number" min="18" max="70" placeholder="อายุ (ปี) เช่น 30"/>
+        <div class="form-hint">ต้องมีอายุ 18 ปีขึ้นไป</div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">อีเมล <span class="req">(จำเป็น)</span></label>
+          <input class="form-input" id="f-email" type="email" placeholder="example@email.com"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">เบอร์โทรศัพท์ <span class="req">(จำเป็น)</span></label>
+          <input class="form-input" id="f-phone" type="tel" placeholder="08X-XXX-XXXX"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">ประเภทงานที่ถนัด <span class="req">(จำเป็น)</span></label>
+        <select class="form-select" id="f-jobtype">
+          <option value="">-- เลือกประเภทงาน --</option>
+          <option>พยาบาลวิชาชีพ</option>
+          <option>พี่เลี้ยงเด็ก</option>
+          <option>ดูแลผู้สูงอายุ</option>
+          <option>แม่บ้านทั่วไป</option>
+          <option>แม่บ้านพรีเมียม</option>
+          <option>ดูแลผู้ป่วย</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">ประสบการณ์ (ปี)</label>
+          <input class="form-input" id="f-exp" type="number" placeholder="เช่น 3" min="0"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">อัตราค่าจ้าง (บาท/วัน)</label>
+          <input class="form-input" id="f-wage" type="number" placeholder="เช่น 300"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">ที่อยู่ปัจจุบัน <span class="req">(จำเป็น)</span></label>
+        <input class="form-input" id="f-addr1" type="text" placeholder="บ้านเลขที่ ถนน ซอย" style="margin-bottom:8px;"/>
+        <div class="form-row">
+          <input class="form-input" id="f-district" type="text" placeholder="แขวง/ตำบล"/>
+          <input class="form-input" id="f-amphoe" type="text" placeholder="เขต/อำเภอ"/>
+        </div>
+        <div class="form-row" style="margin-top:8px;">
+          <input class="form-input" id="f-province" type="text" placeholder="จังหวัด"/>
+          <input class="form-input" id="f-zipcode" type="text" placeholder="รหัสไปรษณีย์"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">แนะนำตัวเอง</label>
+        <textarea class="form-textarea" id="f-bio" placeholder="เล่าเกี่ยวกับตัวเองและประสบการณ์..."></textarea>
+      </div>
+
+      <!-- แนบรูปทะเบียนบ้าน -->
+      <div class="form-group">
+        <label class="form-label">แนบรูปทะเบียนบ้าน</label>
+        <div class="file-upload-box" id="box-housebook" onclick="markFile('box-housebook','lbl-housebook')">
+          <input type="file" accept="image/*,.pdf" onchange="markFile('box-housebook','lbl-housebook',this)"/>
+          <div class="upload-icon">🏠</div>
+          <div class="upload-label" id="lbl-housebook">คลิกเพื่ออัปโหลดทะเบียนบ้าน</div>
+          <div class="upload-hint">JPG, PNG หรือ PDF ไม่เกิน 5MB</div>
+        </div>
+      </div>
+
+      <!-- บัตรประชาชน -->
+      <div class="form-group">
+        <label class="form-label">บัตรประชาชน <span class="req">(จำเป็น)</span></label>
+        <div class="file-upload-box" id="box-idcard" onclick="markFile('box-idcard','lbl-idcard')">
+          <input type="file" accept="image/*,.pdf" onchange="markFile('box-idcard','lbl-idcard',this)"/>
+          <div class="upload-icon">🪪</div>
+          <div class="upload-label" id="lbl-idcard">คลิกเพื่ออัปโหลดบัตรประชาชน</div>
+          <div class="upload-hint">JPG, PNG หรือ PDF ไม่เกิน 5MB</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STEP 2: ทักษะ ===== -->
+    <div id="reg-step-2" class="reg-card" style="display:none;">
+      <div class="reg-card-title">ทักษะและความเชี่ยวชาญ</div>
+
+      <div class="form-group">
+        <label class="form-label">ทักษะหลัก <span class="req">(อย่างน้อย 1 อัน)</span></label>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;" id="skill-list">
+          <label class="skill-checkbox"><input type="checkbox" value="ดูแลผู้ป่วย" onchange="countSkills()"/> ดูแลผู้ป่วย</label>
+          <label class="skill-checkbox"><input type="checkbox" value="ให้ยา" onchange="countSkills()"/> ให้ยา</label>
+          <label class="skill-checkbox"><input type="checkbox" value="ทำแผล" onchange="countSkills()"/> ทำแผล</label>
+          <label class="skill-checkbox"><input type="checkbox" value="กายภาพบำบัด" onchange="countSkills()"/> กายภาพบำบัด</label>
+          <label class="skill-checkbox"><input type="checkbox" value="ทำอาหารเพื่อสุขภาพ" onchange="countSkills()"/> ทำอาหารเพื่อสุขภาพ</label>
+          <label class="skill-checkbox"><input type="checkbox" value="ดูแลเด็กทารก" onchange="countSkills()"/> ดูแลเด็กทารก</label>
+          <label class="skill-checkbox"><input type="checkbox" value="ซักรีด" onchange="countSkills()"/> ซักรีด</label>
+          <label class="skill-checkbox"><input type="checkbox" value="ทำความสะอาด" onchange="countSkills()"/> ทำความสะอาด</label>
+          <label class="skill-checkbox"><input type="checkbox" value="วัดความดัน" onchange="countSkills()"/> วัดความดัน</label>
+          <label class="skill-checkbox"><input type="checkbox" value="ดูแลผู้สูงอายุ" onchange="countSkills()"/> ดูแลผู้สูงอายุ</label>
+        </div>
+        <div id="skill-count-msg" style="font-size:12px;color:var(--gray-400);margin-top:8px;">เลือกแล้ว 0 ทักษะ</div>
+      </div>
+
+      <div class="form-group" style="margin-top:20px;">
+        <label class="form-label">พื้นที่ทำงาน <span class="req">(จำเป็น)</span></label>
+        <select class="form-select" id="f-area">
+          <option value="">-- เลือกพื้นที่ --</option>
+          <option>กรุงเทพมหานคร</option>
+          <option>นนทบุรี</option>
+          <option>ปทุมธานี</option>
+          <option>สมุทรปราการ</option>
+          <option>สมุทรสาคร</option>
+          <option>นครปฐม</option>
+          <option>เชียงใหม่</option>
+          <option>ขอนแก่น</option>
+          <option>ภูเก็ต</option>
+          <option>อื่นๆ</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">วันที่พร้อมทำงาน</label>
+        <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;">
+          <div class="avail-day" onclick="toggleDay(this)">จ<br/><small>Mon</small></div>
+          <div class="avail-day" onclick="toggleDay(this)">อ<br/><small>Tue</small></div>
+          <div class="avail-day" onclick="toggleDay(this)">พ<br/><small>Wed</small></div>
+          <div class="avail-day" onclick="toggleDay(this)">พฤ<br/><small>Thu</small></div>
+          <div class="avail-day" onclick="toggleDay(this)">ศ<br/><small>Fri</small></div>
+          <div class="avail-day off" onclick="toggleDay(this)">ส<br/><small>Sat</small></div>
+          <div class="avail-day off" onclick="toggleDay(this)">อา<br/><small>Sun</small></div>
+        </div>
+      </div>
+      <div class="form-row" style="margin-top:16px;">
+        <div class="form-group"><label class="form-label">เวลาเริ่มทำงาน</label><input class="form-input" type="time" value="08:00"/></div>
+        <div class="form-group"><label class="form-label">เวลาเลิกทำงาน</label><input class="form-input" type="time" value="17:00"/></div>
+      </div>
+    </div>
+
+    <!-- ===== STEP 3: เอกสาร ===== -->
+    <div id="reg-step-3" class="reg-card" style="display:none;">
+      <div class="reg-card-title">อัปโหลดเอกสารเพิ่มเติม</div>
+      <p style="font-size:13px;color:var(--gray-400);margin-bottom:20px;">เอกสารจะถูกใช้สำหรับการตรวจสอบตัวตนเท่านั้น ตามข้อ 4 ของสัญญาฟรีแลนซ์</p>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="form-group">
+          <label class="form-label">ใบรับรองคุณวุฒิ / ใบอนุญาตประกอบวิชาชีพ</label>
+          <div class="file-upload-box" id="box-cert" onclick="markFile('box-cert','lbl-cert')">
+            <input type="file" accept="image/*,.pdf" onchange="markFile('box-cert','lbl-cert',this)"/>
+            <div class="upload-icon">📋</div>
+            <div class="upload-label" id="lbl-cert">คลิกเพื่ออัปโหลด</div>
+            <div class="upload-hint">เช่น ใบประกอบวิชาชีพพยาบาล / ประกาศนียบัตร</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">ใบรับรองสุขภาพ</label>
+          <div class="file-upload-box" id="box-health" onclick="markFile('box-health','lbl-health')">
+            <input type="file" accept="image/*,.pdf" onchange="markFile('box-health','lbl-health',this)"/>
+            <div class="upload-icon">🏥</div>
+            <div class="upload-label" id="lbl-health">คลิกเพื่ออัปโหลด</div>
+            <div class="upload-hint">ใบตรวจสุขภาพไม่เกิน 6 เดือน</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">เอกสารอื่นๆ (ถ้ามี)</label>
+          <div class="file-upload-box" id="box-other" onclick="markFile('box-other','lbl-other')">
+            <input type="file" accept="image/*,.pdf" onchange="markFile('box-other','lbl-other',this)"/>
+            <div class="upload-icon">📎</div>
+            <div class="upload-label" id="lbl-other">คลิกเพื่ออัปโหลด</div>
+            <div class="upload-hint">เอกสารประกอบอื่นๆ ที่เกี่ยวข้อง</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== STEP 4: ยืนยัน ===== -->
+    <div id="reg-step-4" class="reg-card" style="display:none;text-align:center;">
+      <div style="font-size:64px;margin-bottom:16px;">🎉</div>
+      <div class="reg-card-title" style="text-align:center;">ยืนยันการสมัครสมาชิก</div>
+      <p style="font-size:13px;color:var(--gray-400);margin-bottom:24px;line-height:1.7;">ข้อมูลจะถูกตรวจสอบภายใน 1-3 วันทำการ</p>
+      <div style="background:var(--gray-50);border-radius:var(--r-md);padding:20px;text-align:left;margin-bottom:24px;">
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--gray-200);font-size:13px;"><span style="color:var(--gray-400);">ประเภทบัญชี</span><span style="font-weight:600;">ฟรีแลนซ์</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;font-size:13px;"><span style="color:var(--gray-400);">สถานะ</span><span class="badge-new">รอตรวจสอบ</span></div>
+      </div>
+
+      <!-- Terms Consent -->
+      <div class="consent-box" style="text-align:left;">
+        <div style="font-size:13px;font-weight:700;color:var(--gray-700);margin-bottom:10px;">📜 ข้อตกลงการใช้งาน</div>
+        <label class="consent-check" id="consent-freelance">
+          <input type="checkbox" id="chk-terms-fl" onchange="checkConsent()"/>
+          <span>ฉันได้อ่านและยอมรับ <a href="terms.html#freelance" target="_blank">ข้อตกลงและเงื่อนไขการสมัครเข้าร่วมเป็นผู้ให้บริการอิสระ (สำหรับฟรีแลนซ์)</a> ครบทุกข้อแล้ว</span>
+        </label>
+      </div>
+      <div id="consent-error" style="color:var(--red);font-size:12px;display:none;margin-bottom:8px;">⚠️ กรุณายินยอมข้อตกลงก่อนสมัคร</div>
+    </div>
+
+    <!-- Buttons -->
+    <div style="display:flex;gap:12px;margin-top:20px;">
+      <button id="reg-prev" class="btn btn-outline-gray btn-lg" onclick="regPrev()" style="display:none;">← ย้อนกลับ</button>
+      <button id="reg-next" class="btn btn-primary btn-lg" style="flex:1;" onclick="regNextValidate()">ถัดไป →</button>
+    </div>
+    <div style="text-align:center;margin-top:16px;font-size:13px;color:var(--gray-400);">
+      มีบัญชีแล้ว? <a href="login.html" style="color:var(--blue);font-weight:600;">เข้าสู่ระบบ</a>
+    </div>
+  </div>
+</div>
+
+<script src="../js/app.js"></script>
+<script>
+// ===== skill checkbox style =====
+document.querySelectorAll('.skill-checkbox').forEach(lbl => {
+  lbl.style.cssText = 'display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;padding:8px 14px;border:1.5px solid var(--gray-200);border-radius:9999px;transition:all .2s;';
+  lbl.querySelector('input').addEventListener('change', function() {
+    lbl.style.borderColor = this.checked ? 'var(--blue-btn)' : 'var(--gray-200)';
+    lbl.style.background  = this.checked ? 'var(--blue-light)' : '';
+    lbl.style.color       = this.checked ? 'var(--blue)' : '';
+  });
+});
+
+function countSkills() {
+  const n = document.querySelectorAll('#skill-list input:checked').length;
+  document.getElementById('skill-count-msg').textContent = `เลือกแล้ว ${n} ทักษะ`;
+  document.getElementById('skill-count-msg').style.color = n > 0 ? 'var(--green)' : 'var(--gray-400)';
+}
+
+function markFile(boxId, lblId, input) {
+  if (input && input.files && input.files[0]) {
+    document.getElementById(boxId).classList.add('has-file');
+    document.getElementById(lblId).textContent = '✓ ' + input.files[0].name;
+  }
+}
+
+function toggleDay(el) {
+  el.classList.toggle('off');
+}
+
+function checkConsent() {
+  document.getElementById('consent-error').style.display = 'none';
+}
+
+function toggleMenu() { document.querySelector('.navbar').classList.toggle('menu-open'); }
+
+// ===== Step validation =====
+let regStep = 1;
+const REG_TOTAL = 4;
+
+function regNextValidate() {
+  if (regStep === 1) {
+    const required = [
+      { id:'f-firstname', label:'ชื่อ' },
+      { id:'f-lastname',  label:'นามสกุล' },
+      { id:'f-age',       label:'อายุ' },
+      { id:'f-email',     label:'อีเมล' },
+      { id:'f-phone',     label:'เบอร์โทรศัพท์' },
+      { id:'f-jobtype',   label:'ประเภทงาน' },
+      { id:'f-addr1',     label:'ที่อยู่' },
+    ];
+    for (const f of required) {
+      const el = document.getElementById(f.id);
+      if (!el || !el.value.trim()) {
+        toast(`⚠️ กรุณากรอก${f.label}`);
+        el && el.focus();
+        return;
+      }
+    }
+    if (parseInt(document.getElementById('f-age').value) < 18) {
+      toast('⚠️ ต้องมีอายุ 18 ปีขึ้นไป'); return;
+    }
+    if (!document.getElementById('box-idcard').classList.contains('has-file')) {
+      toast('⚠️ กรุณาแนบบัตรประชาชน'); return;
+    }
+  }
+  if (regStep === 2) {
+    const skills = document.querySelectorAll('#skill-list input:checked').length;
+    if (skills < 1) { toast('⚠️ กรุณาเลือกทักษะอย่างน้อย 1 อัน'); return; }
+    if (!document.getElementById('f-area').value) { toast('⚠️ กรุณาเลือกพื้นที่ทำงาน'); return; }
+  }
+  if (regStep === REG_TOTAL) {
+    if (!document.getElementById('chk-terms-fl').checked) {
+      document.getElementById('consent-error').style.display = 'block';
+      return;
+    }
+    toast('สมัครสมาชิกสำเร็จ! 🎉 กรุณารอการตรวจสอบ 1-3 วันทำการ');
+    setTimeout(() => location.href = 'login.html', 1600);
+    return;
+  }
+  regStep++; renderRegStep();
+}
+
+function regPrev() { if (regStep > 1) { regStep--; renderRegStep(); } }
+
+function renderRegStep() {
+  for (let i = 1; i <= REG_TOTAL; i++) {
+    const dot  = document.getElementById('si-' + i);
+    const line = document.getElementById('sl-' + i);
+    const lbl  = document.getElementById('slbl-' + i);
+    const pane = document.getElementById('reg-step-' + i);
+    if (dot)  { dot.className = 'si-dot' + (i < regStep ? ' done' : i === regStep ? ' active' : ''); dot.textContent = i < regStep ? '✓' : i; }
+    if (line) line.className = 'si-line' + (i < regStep ? ' done' : '');
+    if (lbl)  lbl.className  = 'si-label' + (i === regStep ? ' active' : '');
+    if (pane) pane.style.display = i === regStep ? 'block' : 'none';
+  }
+  document.getElementById('reg-prev').style.display = regStep > 1 ? 'inline-flex' : 'none';
+  document.getElementById('reg-next').textContent = regStep === REG_TOTAL ? '✅ สมัครสมาชิก' : 'ถัดไป →';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+<script>document.addEventListener("click",function(e){if(!e.target.closest(".nav-dropdown")){document.querySelectorAll(".nav-dropdown.open").forEach(d=>d.classList.remove("open"));}});</script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>หาพนักงาน — CareYouGo</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand" style="cursor:pointer;" onclick="location.href='../index.html'">CareYouGo</div>
+  <ul class="navbar-nav">
+    <li><a href="../index.html">หน้าหลัก</a></li>
+    <li><a href="browse.html" class="active">หาพนักงาน</a></li>
+    <li><a href="register.html">สมัครงาน</a></li>
+    <li><a href="about.html">เกี่ยวกับเรา</a></li>
+  </ul>
+  <div class="navbar-actions">
+    <button class="btn btn-outline-white btn-sm" onclick="location.href='login.html'">เข้าสู่ระบบ</button>
+    <div class="nav-dropdown">
+      <button class="btn btn-primary btn-sm" onclick="this.closest('.nav-dropdown').classList.toggle('open')">สมัครสมาชิก ▾</button>
+      <div class="nav-dropdown-menu">
+        <button class="nav-dropdown-item" onclick="location.href='register-customer.html'">👩‍💼 สมัครเป็นลูกค้า</button>
+        <div class="nav-dropdown-divider"></div>
+        <button class="nav-dropdown-item" onclick="location.href='register.html'">🧹 สมัครเป็นฟรีแลนซ์</button>
+      </div>
+    </div>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<div class="browse-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">หน้าหลัก</a><span>›</span><span>ค้นหาพนักงาน</span>
+    </div>
+    <h1>ค้นหาพนักงาน</h1>
+    <p>พยาบาล • พี่เลี้ยงเด็ก • ดูแลผู้สูงอายุ • แม่บ้าน</p>
+    <div class="search-bar" style="max-width:680px;">
+      <input type="text" id="search-input" placeholder="🔍 ค้นหา ชื่อ ตำแหน่ง หรือทักษะที่ต้องการ..."/>
+      <button onclick="doSearch()">ค้นหา</button>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="container">
+  <div class="browse-layout">
+
+    <!-- Filter Sidebar -->
+    <aside class="filter-sidebar">
+      <div class="filter-title">🔧 ตัวกรอง</div>
+
+      <div class="filter-section">
+        <div class="filter-section-title">ประเภทงาน</div>
+        <label class="filter-item"><input type="radio" name="type" value="" checked onchange="applyFilters()"/> ทั้งหมด</label>
+        <label class="filter-item"><input type="radio" name="type" value="พยาบาล" onchange="applyFilters()"/> พยาบาล</label>
+        <label class="filter-item"><input type="radio" name="type" value="พี่เลี้ยงเด็ก" onchange="applyFilters()"/> พี่เลี้ยงเด็ก</label>
+        <label class="filter-item"><input type="radio" name="type" value="ดูแลผู้สูงอายุ" onchange="applyFilters()"/> ดูแลผู้สูงอายุ</label>
+        <label class="filter-item"><input type="radio" name="type" value="แม่บ้าน" onchange="applyFilters()"/> แม่บ้าน</label>
+        <label class="filter-item"><input type="radio" name="type" value="ดูแลผู้ป่วย" onchange="applyFilters()"/> ดูแลผู้ป่วย</label>
+      </div>
+
+      <div class="filter-section">
+        <div class="filter-section-title">ราคาสูงสุด (฿/ชม.)</div>
+        <div class="price-slider">
+          <input type="range" min="100" max="500" value="500" id="price-range" oninput="updatePrice(this.value);applyFilters()"/>
+          <div class="price-row"><span>100฿</span><span>ไม่เกิน <strong id="price-val">500</strong>฿</span><span>500฿</span></div>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <div class="filter-section-title">คะแนนขั้นต่ำ</div>
+        <label class="filter-item"><input type="radio" name="rating" value="0" checked onchange="applyFilters()"/> ทุกคะแนน</label>
+        <label class="filter-item"><input type="radio" name="rating" value="4.5" onchange="applyFilters()"/> 4.5+ ★</label>
+        <label class="filter-item"><input type="radio" name="rating" value="4.8" onchange="applyFilters()"/> 4.8+ ★</label>
+      </div>
+
+      <div class="filter-section">
+        <div class="filter-section-title">เฉพาะที่ยืนยันแล้ว</div>
+        <label class="filter-item"><input type="checkbox" id="verified-only" onchange="applyFilters()"/> ยืนยันตัวตนแล้วเท่านั้น</label>
+      </div>
+
+      <button class="btn btn-outline-gray btn-full" style="margin-top:4px;" onclick="resetFilters()">ล้างตัวกรอง</button>
+    </aside>
+
+    <!-- Cards -->
+    <div>
+      <button class="mobile-filter-btn" onclick="toggleMobileFilter()">🔧 ตัวกรอง <span id="filter-count"></span></button>
+      <div class="browse-header">
+        <div class="browse-count">พบ <strong id="result-count">9</strong> คน</div>
+        <select class="browse-sort" onchange="applySort(this.value)">
+          <option value="default">เรียงตาม: แนะนำ</option>
+          <option value="rating">คะแนนสูงสุด</option>
+          <option value="price-asc">ราคาต่ำ → สูง</option>
+          <option value="price-desc">ราคาสูง → ต่ำ</option>
+          <option value="reviews">รีวิวมากที่สุด</option>
+        </select>
+      </div>
+      <div class="wgrid" id="browse-cards"></div>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Filter Drawer -->
+<div id="mobile-filter-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:300;" onclick="toggleMobileFilter()"></div>
+<div id="mobile-filter-drawer" style="display:none;position:fixed;bottom:0;left:0;right:0;background:white;border-radius:20px 20px 0 0;padding:24px;z-index:301;max-height:80vh;overflow-y:auto;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+    <div style="font-size:16px;font-weight:700;">🔧 ตัวกรอง</div>
+    <button onclick="toggleMobileFilter()" style="background:none;border:none;font-size:20px;cursor:pointer;">✕</button>
+  </div>
+  <div class="filter-section">
+    <div class="filter-section-title">ประเภทงาน</div>
+    <label class="filter-item"><input type="radio" name="mtype" value="" checked onchange="syncMobileFilter('type',this.value)"/> ทั้งหมด</label>
+    <label class="filter-item"><input type="radio" name="mtype" value="พยาบาล" onchange="syncMobileFilter('type',this.value)"/> พยาบาล</label>
+    <label class="filter-item"><input type="radio" name="mtype" value="พี่เลี้ยงเด็ก" onchange="syncMobileFilter('type',this.value)"/> พี่เลี้ยงเด็ก</label>
+    <label class="filter-item"><input type="radio" name="mtype" value="ดูแลผู้สูงอายุ" onchange="syncMobileFilter('type',this.value)"/> ดูแลผู้สูงอายุ</label>
+    <label class="filter-item"><input type="radio" name="mtype" value="แม่บ้าน" onchange="syncMobileFilter('type',this.value)"/> แม่บ้าน</label>
+  </div>
+  <button class="btn btn-primary btn-full btn-lg" onclick="toggleMobileFilter()">ดูผลลัพธ์</button>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" style="margin-top:40px;">
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand">CareYouGo</div><p class="footer-desc">แพลตฟอร์มเชื่อมต่อนายจ้างกับพนักงานดูแลบ้านมืออาชีพ</p></div>
+      <div><div class="footer-col-title">บริการ</div><ul class="footer-links"><li><a href="browse.html">หาพยาบาล</a></li><li><a href="browse.html">หาพี่เลี้ยงเด็ก</a></li><li><a href="browse.html">ดูแลผู้สูงอายุ</a></li></ul></div>
+      <div><div class="footer-col-title">บริษัท</div><ul class="footer-links"><li><a href="#">เกี่ยวกับเรา</a></li><li><a href="#">ติดต่อเรา</a></li></ul></div>
+      <div><div class="footer-col-title">ช่วยเหลือ</div><ul class="footer-links"><li><a href="#">ศูนย์ช่วยเหลือ</a></li><li><a href="#">นโยบายความเป็นส่วนตัว</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">© 2025 CareYouGo. สงวนลิขสิทธิ์</div>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+<script>
+const COLORS = ['#C7E2FF','#D1FAE5','#FDE8CF','#EDE9FE','#FCE7F3','#DBEAFE','#D1FAE5','#FEF3C7','#E0E7FF'];
+const WORKERS = [
+  { id:1, init:'ส', name:'สมหญิง อินทรีตี', role:'พยาบาลวิชาชีพ',   sub:'ประสบการณ์ 5 ปี', rating:4.9, rcount:46,  price:350, verified:true },
+  { id:2, init:'น', name:'นารี สุโก',        role:'พี่เลี้ยงเด็ก',   sub:'ประสบการณ์ 7 ปี', rating:4.8, rcount:132, price:250, verified:true },
+  { id:3, init:'ว', name:'วีโอ กาวตี',       role:'ดูแลผู้สูงอายุ',  sub:'ประสบการณ์ 3 ปี', rating:5.0, rcount:81,  price:300, verified:true },
+  { id:4, init:'ส', name:'สดา เมฆใย',        role:'แม่บ้าน',         sub:'ประสบการณ์ 2 ปี', rating:4.7, rcount:137, price:200, verified:true },
+  { id:5, init:'พ', name:'พิมพ์รัก วิรัตน์', role:'พี่เลี้ยงเด็ก',   sub:'ประสบการณ์ 8 ปี', rating:4.9, rcount:55,  price:380, verified:true },
+  { id:6, init:'น', name:'นภา อิตี',         role:'แม่บ้านพรีเมียม', sub:'ประสบการณ์ 6 ปี', rating:4.6, rcount:70,  price:220, verified:true },
+  { id:7, init:'ก', name:'กนกวรรณ อินนาก',   role:'พยาบาล',          sub:'ประสบการณ์ 9 ปี', rating:4.9, rcount:70,  price:320, verified:true },
+  { id:8, init:'ร', name:'รัตน์ สงสยาน',     role:'แม่บ้านทั่วไป',   sub:'ประสบการณ์ 4 ปี', rating:4.8, rcount:162, price:340, verified:false },
+  { id:9, init:'อ', name:'อรุณี ไฝดี',       role:'ดูแลผู้ป่วย',     sub:'ประสบการณ์ 5 ปี', rating:4.7, rcount:135, price:210, verified:true },
+];
+
+let filtered = [...WORKERS];
+let currentPage = 1;
+const PER_PAGE = 6;
+
+function doSearch() {
+  const q = document.getElementById('search-input').value.toLowerCase();
+  filtered = WORKERS.filter(w =>
+    w.name.includes(q) || w.role.toLowerCase().includes(q) || q === ''
+  );
+  applyFilters(true);
+}
+
+function applyFilters(fromSearch) {
+  const type    = document.querySelector('input[name="type"]:checked')?.value || '';
+  const maxPrice = parseInt(document.getElementById('price-range')?.value || 500);
+  const minRating = parseFloat(document.querySelector('input[name="rating"]:checked')?.value || 0);
+  const verifiedOnly = document.getElementById('verified-only')?.checked;
+  const q = document.getElementById('search-input')?.value.toLowerCase() || '';
+
+  filtered = WORKERS.filter(w => {
+    if (q && !w.name.includes(q) && !w.role.toLowerCase().includes(q)) return false;
+    if (type && !w.role.includes(type)) return false;
+    if (w.price > maxPrice) return false;
+    if (w.rating < minRating) return false;
+    if (verifiedOnly && !w.verified) return false;
+    return true;
+  });
+  currentPage = 1;
+  renderCards();
+}
+
+function applySort(val) {
+  if (val === 'rating')     filtered.sort((a,b) => b.rating - a.rating);
+  else if (val === 'price-asc')  filtered.sort((a,b) => a.price - b.price);
+  else if (val === 'price-desc') filtered.sort((a,b) => b.price - a.price);
+  else if (val === 'reviews')    filtered.sort((a,b) => b.rcount - a.rcount);
+  else filtered = [...WORKERS].filter(w => filtered.find(f => f.id === w.id));
+  currentPage = 1;
+  renderCards();
+}
+
+function renderCards() {
+  const el = document.getElementById('browse-cards');
+  const countEl = document.getElementById('result-count');
+  if (countEl) countEl.textContent = filtered.length;
+
+  const start = (currentPage - 1) * PER_PAGE;
+  const page  = filtered.slice(start, start + PER_PAGE);
+
+  if (page.length === 0) {
+    el.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--gray-400);"><div style="font-size:48px;margin-bottom:12px;">🔍</div><div style="font-size:16px;">ไม่พบพนักงานที่ตรงกับเงื่อนไข</div><button class="btn btn-outline" style="margin-top:16px;" onclick="resetFilters()">ล้างตัวกรอง</button></div>';
+    document.getElementById('pagination').innerHTML = '';
+    return;
+  }
+
+  el.innerHTML = page.map((w, i) => {
+    const ci = WORKERS.findIndex(x => x.id === w.id);
+    return `
+    <div class="bcard" onclick="viewProfile(${w.id})">
+      ${w.verified ? '<span class="bcard-verified">✓ ยืนยันแล้ว</span>' : ''}
+      <div class="bcard-avatar" style="background:${COLORS[ci]};">${w.init}</div>
+      <div class="bcard-body">
+        <div class="bcard-name">${w.name}</div>
+        <div class="bcard-role">${w.role}</div>
+        <div class="bcard-sub">${w.sub}</div>
+        <div class="bcard-rating"><span class="stars">★★★★★</span> ${w.rating} (${w.rcount} รีวิว)</div>
+        <div class="bcard-price">฿${w.price}<span>/ชม.</span></div>
+        <div class="bcard-actions">
+          <button class="btn btn-outline-gray btn-sm" onclick="event.stopPropagation();viewProfile(${w.id})">ดูโปรไฟล์</button>
+          <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();toast('ส่งคำขอแล้ว! 📨')">ติดต่อ</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Pagination
+  const total = Math.ceil(filtered.length / PER_PAGE);
+  let pg = '';
+  for (let i = 1; i <= total; i++) {
+    pg += `<button class="page-btn${i===currentPage?' active':''}" onclick="gotoPage(${i})">${i}</button>`;
+  }
+  if (currentPage < total) pg += `<button class="page-btn" onclick="gotoPage(${currentPage+1})">→</button>`;
+  document.getElementById('pagination').innerHTML = pg;
+}
+
+function gotoPage(n) { currentPage = n; renderCards(); window.scrollTo({top:0,behavior:'smooth'}); }
+
+function viewProfile(id) {
+  localStorage.setItem('selectedWorker', id);
+  location.href = 'profile.html';
+}
+
+function resetFilters() {
+  document.querySelectorAll('input[name="type"]')[0].checked = true;
+  document.querySelectorAll('input[name="rating"]')[0].checked = true;
+  document.getElementById('price-range').value = 500;
+  document.getElementById('price-val').textContent = '500';
+  document.getElementById('verified-only').checked = false;
+  document.getElementById('search-input').value = '';
+  filtered = [...WORKERS];
+  currentPage = 1;
+  renderCards();
+}
+
+function toggleMobileFilter() {
+  const overlay = document.getElementById('mobile-filter-overlay');
+  const drawer  = document.getElementById('mobile-filter-drawer');
+  const isOpen  = drawer.style.display === 'block';
+  overlay.style.display = isOpen ? 'none' : 'block';
+  drawer.style.display  = isOpen ? 'none' : 'block';
+}
+
+function syncMobileFilter(name, val) {
+  const radios = document.querySelectorAll(`input[name="${name}"]`);
+  radios.forEach(r => { if (r.value === val) r.checked = true; });
+  applyFilters();
+}
+
+function toggleMenu() {
+  document.querySelector('.navbar').classList.toggle('menu-open');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderCards();
+});
+</script>
+<script>document.addEventListener("click",function(e){if(!e.target.closest(".nav-dropdown")){document.querySelectorAll(".nav-dropdown.open").forEach(d=>d.classList.remove("open"));}});</script>
+</body>
+</html>

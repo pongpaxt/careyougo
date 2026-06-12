@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ประกาศหางาน — CareYouGo</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Prompt:wght@500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand" onclick="location.href='../index.html'" style="cursor:pointer;">CareYouGo</div>
+  <ul class="navbar-nav">
+    <li><a href="../index.html">หน้าหลัก</a></li>
+    <li><a href="browse.html">หาพนักงาน</a></li>
+    <li><a href="register.html">สมัครงาน</a></li>
+    <li><a href="about.html">เกี่ยวกับเรา</a></li>
+  </ul>
+  <div class="navbar-actions">
+    <button class="btn btn-outline-white btn-sm" onclick="location.href='login.html'">เข้าสู่ระบบ</button>
+    <div class="nav-dropdown">
+      <button class="btn btn-primary btn-sm" onclick="this.closest('.nav-dropdown').classList.toggle('open')">สมัครสมาชิก ▾</button>
+      <div class="nav-dropdown-menu">
+        <button class="nav-dropdown-item" onclick="location.href='register-customer.html'">👩‍💼 สมัครเป็นลูกค้า</button>
+        <div class="nav-dropdown-divider"></div>
+        <button class="nav-dropdown-item" onclick="location.href='register.html'">🧹 สมัครเป็นฟรีแลนซ์</button>
+      </div>
+    </div>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div style="background:linear-gradient(135deg,var(--navy-dark),#1d4ed8);padding:40px 0;color:white;">
+  <div class="container">
+    <div class="breadcrumb"><a href="../index.html">หน้าหลัก</a><span>›</span><span>ประกาศหางาน</span></div>
+    <h1 style="font-size:26px;font-weight:700;margin-bottom:6px;">📢 ประกาศหาคนรับงาน</h1>
+    <p style="font-size:14px;opacity:.7;">กำหนดงาน งบประมาณ และเงื่อนไข เพื่อให้ผู้ดูแลที่เหมาะสมมายื่นข้อเสนอ</p>
+  </div>
+</div>
+
+<div class="job-post-layout">
+  <div class="reg-card">
+    <div class="reg-card-title">📋 รายละเอียดงาน</div>
+
+    <div class="form-group">
+      <label class="form-label">ประเภทงานที่ต้องการ <span class="req">(จำเป็น)</span></label>
+      <select class="form-select" id="jp-type" onchange="updatePreview()">
+        <option value="">-- เลือกประเภทงาน --</option>
+        <option>พยาบาลดูแลที่บ้าน</option>
+        <option>พี่เลี้ยงเด็ก</option>
+        <option>ดูแลผู้สูงอายุ</option>
+        <option>แม่บ้านทั่วไป</option>
+        <option>แม่บ้านพรีเมียม</option>
+        <option>ดูแลผู้ป่วย</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">ชื่อประกาศ <span class="req">(จำเป็น)</span></label>
+      <input class="form-input" id="jp-title" type="text" placeholder="เช่น หาพยาบาลดูแลคุณแม่อายุ 75 ปี" oninput="updatePreview()"/>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">รายละเอียดงาน</label>
+      <textarea class="form-textarea" id="jp-desc" placeholder="อธิบายงานที่ต้องการ เช่น ดูแลผู้ป่วยติดเตียง ให้ยา 3 มื้อ ทำแผล..."></textarea>
+    </div>
+
+    <div style="border-top:1px solid var(--gray-100);margin:24px 0;"></div>
+    <div class="reg-card-title" style="font-size:15px;">💰 งบประมาณ</div>
+
+    <div class="form-group">
+      <label class="form-label">รูปแบบค่าจ้าง</label>
+      <div style="display:flex;gap:10px;margin-top:6px;" id="wage-type">
+        <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;padding:8px 16px;border:1.5px solid var(--blue-btn);background:var(--blue-light);color:var(--blue);border-radius:9999px;font-weight:600;" id="lbl-hourly">
+          <input type="radio" name="wagetype" value="hourly" checked onchange="updateWageLabel(this)"/> รายชั่วโมง
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;padding:8px 16px;border:1.5px solid var(--gray-200);border-radius:9999px;" id="lbl-daily">
+          <input type="radio" name="wagetype" value="daily" onchange="updateWageLabel(this)"/> รายวัน
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;padding:8px 16px;border:1.5px solid var(--gray-200);border-radius:9999px;" id="lbl-monthly">
+          <input type="radio" name="wagetype" value="monthly" onchange="updateWageLabel(this)"/> รายเดือน
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">งบประมาณขั้นต่ำ <span class="req">(จำเป็น)</span></label>
+        <div class="price-input-wrap">
+          <div class="price-prefix">฿</div>
+          <input type="number" id="jp-min" placeholder="เช่น 200" min="0" oninput="updatePreview()"/>
+          <div class="price-suffix" id="wage-suffix">บาท/ชม.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">งบประมาณสูงสุด</label>
+        <div class="price-input-wrap">
+          <div class="price-prefix">฿</div>
+          <input type="number" id="jp-max" placeholder="เช่น 400" min="0" oninput="updatePreview()"/>
+          <div class="price-suffix" id="wage-suffix2">บาท/ชม.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">ต้องการเริ่มงาน</label>
+      <div class="form-row">
+        <input class="form-input" type="date" id="jp-startdate" oninput="updatePreview()"/>
+        <select class="form-select" id="jp-duration" onchange="updatePreview()">
+          <option value="">ระยะเวลา</option>
+          <option>1 วัน</option>
+          <option>1 สัปดาห์</option>
+          <option>1-2 สัปดาห์</option>
+          <option>1 เดือน</option>
+          <option>3 เดือน</option>
+          <option>ระยะยาว (มากกว่า 3 เดือน)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">จำนวนชั่วโมงต่อวัน</label>
+        <input class="form-input" id="jp-hours" type="number" min="1" max="24" placeholder="เช่น 8"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">พื้นที่ปฏิบัติงาน <span class="req">(จำเป็น)</span></label>
+        <select class="form-select" id="jp-area" onchange="updatePreview()">
+          <option value="">เลือกพื้นที่</option>
+          <option>กรุงเทพมหานคร</option>
+          <option>นนทบุรี</option>
+          <option>ปทุมธานี</option>
+          <option>สมุทรปราการ</option>
+          <option>เชียงใหม่</option>
+          <option>ขอนแก่น</option>
+          <option>ภูเก็ต</option>
+          <option>อื่นๆ</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">ทักษะที่ต้องการ (เลือกได้หลายอย่าง)</label>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;" id="jp-skills">
+        <label class="jp-skill-lbl"><input type="checkbox"/> ให้ยา</label>
+        <label class="jp-skill-lbl"><input type="checkbox"/> ทำแผล</label>
+        <label class="jp-skill-lbl"><input type="checkbox"/> วัดความดัน</label>
+        <label class="jp-skill-lbl"><input type="checkbox"/> กายภาพบำบัด</label>
+        <label class="jp-skill-lbl"><input type="checkbox"/> ทำอาหาร</label>
+        <label class="jp-skill-lbl"><input type="checkbox"/> ซักรีด</label>
+        <label class="jp-skill-lbl"><input type="checkbox"/> ดูแลเด็ก</label>
+        <label class="jp-skill-lbl"><input type="checkbox"/> ดูแลผู้สูงอายุ</label>
+      </div>
+    </div>
+
+    <!-- Preview -->
+    <div class="job-preview" id="job-preview" style="display:none;">
+      <div class="job-preview-title">👁️ ตัวอย่างประกาศของคุณ</div>
+      <div class="job-preview-row"><span class="job-preview-label">ประเภทงาน</span><span class="job-preview-val" id="prev-type">—</span></div>
+      <div class="job-preview-row"><span class="job-preview-label">ชื่อประกาศ</span><span class="job-preview-val" id="prev-title">—</span></div>
+      <div class="job-preview-row"><span class="job-preview-label">งบประมาณ</span><span class="job-preview-val" id="prev-price">—</span></div>
+      <div class="job-preview-row"><span class="job-preview-label">วันเริ่มงาน</span><span class="job-preview-val" id="prev-date">—</span></div>
+      <div class="job-preview-row"><span class="job-preview-label">พื้นที่</span><span class="job-preview-val" id="prev-area">—</span></div>
+    </div>
+
+    <div style="margin-top:24px;display:flex;gap:12px;">
+      <button class="btn btn-outline-gray btn-lg" onclick="location.href='../index.html'">ยกเลิก</button>
+      <button class="btn btn-primary btn-lg" style="flex:1;" onclick="submitJob()">📢 เผยแพร่ประกาศ</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">© 2025 CareYouGo. สงวนลิขสิทธิ์</div>
+  </div>
+</footer>
+
+<script src="../js/app.js"></script>
+<script>
+// skill label style
+document.querySelectorAll('.jp-skill-lbl').forEach(lbl => {
+  lbl.style.cssText = 'display:flex;align-items:center;gap:6px;font-size:12px;cursor:pointer;padding:6px 12px;border:1.5px solid var(--gray-200);border-radius:9999px;transition:all .2s;';
+  lbl.querySelector('input').addEventListener('change', function() {
+    lbl.style.borderColor = this.checked ? 'var(--blue-btn)' : 'var(--gray-200)';
+    lbl.style.background  = this.checked ? 'var(--blue-light)' : '';
+    lbl.style.color       = this.checked ? 'var(--blue)' : '';
+  });
+});
+
+// wage type radio style
+document.querySelectorAll('input[name="wagetype"]').forEach(r => {
+  r.addEventListener('change', function() {
+    document.querySelectorAll('input[name="wagetype"]').forEach(x => {
+      const lbl = x.closest('label');
+      if (x.checked) {
+        lbl.style.borderColor = 'var(--blue-btn)';
+        lbl.style.background = 'var(--blue-light)';
+        lbl.style.color = 'var(--blue)';
+        lbl.style.fontWeight = '600';
+      } else {
+        lbl.style.borderColor = 'var(--gray-200)';
+        lbl.style.background = '';
+        lbl.style.color = '';
+        lbl.style.fontWeight = '';
+      }
+    });
+  });
+});
+
+const SUFFIX_MAP = { hourly: 'บาท/ชม.', daily: 'บาท/วัน', monthly: 'บาท/เดือน' };
+function updateWageLabel(radio) {
+  const s = SUFFIX_MAP[radio.value] || 'บาท';
+  document.getElementById('wage-suffix').textContent = s;
+  document.getElementById('wage-suffix2').textContent = s;
+  updatePreview();
+}
+
+function updatePreview() {
+  const type  = document.getElementById('jp-type').value;
+  const title = document.getElementById('jp-title').value;
+  const min   = document.getElementById('jp-min').value;
+  const max   = document.getElementById('jp-max').value;
+  const date  = document.getElementById('jp-startdate').value;
+  const area  = document.getElementById('jp-area').value;
+  const suffix = document.getElementById('wage-suffix').textContent;
+
+  const hasData = type || title || min;
+  document.getElementById('job-preview').style.display = hasData ? 'block' : 'none';
+  document.getElementById('prev-type').textContent  = type  || '—';
+  document.getElementById('prev-title').textContent = title || '—';
+  document.getElementById('prev-area').textContent  = area  || '—';
+
+  let priceStr = '—';
+  if (min && max) priceStr = `฿${Number(min).toLocaleString()} – ฿${Number(max).toLocaleString()} ${suffix}`;
+  else if (min)  priceStr = `฿${Number(min).toLocaleString()} ${suffix} ขึ้นไป`;
+  document.getElementById('prev-price').textContent = priceStr;
+
+  if (date) {
+    const d = new Date(date);
+    document.getElementById('prev-date').textContent = d.toLocaleDateString('th-TH', { year:'numeric', month:'long', day:'numeric' });
+  } else {
+    document.getElementById('prev-date').textContent = '—';
+  }
+}
+
+function submitJob() {
+  const type = document.getElementById('jp-type').value;
+  const title = document.getElementById('jp-title').value;
+  const min = document.getElementById('jp-min').value;
+  const area = document.getElementById('jp-area').value;
+  if (!type)  { toast('⚠️ กรุณาเลือกประเภทงาน'); return; }
+  if (!title) { toast('⚠️ กรุณาใส่ชื่อประกาศ'); return; }
+  if (!min)   { toast('⚠️ กรุณาใส่งบประมาณขั้นต่ำ'); return; }
+  if (!area)  { toast('⚠️ กรุณาเลือกพื้นที่ปฏิบัติงาน'); return; }
+  toast('เผยแพร่ประกาศสำเร็จ! 📢 ผู้ดูแลจะเริ่มยื่นข้อเสนอเร็วๆ นี้');
+  setTimeout(() => location.href = 'browse.html', 1800);
+}
+
+function toggleMenu() { document.querySelector('.navbar').classList.toggle('menu-open'); }
+
+function toast(msg) {
+  const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2800);
+}
+</script>
+<script>document.addEventListener("click",function(e){if(!e.target.closest(".nav-dropdown")){document.querySelectorAll(".nav-dropdown.open").forEach(d=>d.classList.remove("open"));}});</script>
+</body>
+</html>

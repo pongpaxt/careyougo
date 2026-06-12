@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>CareYouGo — หาพยาบาลและแม่บ้านคุณภาพสูง</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Prompt:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-brand" onclick="location.href='index.html'" style="cursor:pointer;">CareYouGo</div>
+    <ul class="navbar-nav">
+      <li><a href="index.html" class="active">หน้าหลัก</a></li>
+      <li><a href="pages/browse.html">หาพนักงาน</a></li>
+      <li><a href="pages/register.html">สมัครงาน</a></li>
+      <li><a href="pages/about.html">เกี่ยวกับเรา</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="btn btn-outline-white btn-sm" onclick="location.href='pages/login.html'">เข้าสู่ระบบ</button>
+      <div class="nav-dropdown">
+        <button class="btn btn-primary btn-sm"
+          onclick="this.closest('.nav-dropdown').classList.toggle('open')">สมัครสมาชิก ▾</button>
+        <div class="nav-dropdown-menu">
+          <button class="nav-dropdown-item" onclick="location.href='pages/register-customer.html'">👩‍💼
+            สมัครเป็นลูกค้า</button>
+          <div class="nav-dropdown-divider"></div>
+          <button class="nav-dropdown-item" onclick="location.href='pages/register.html'">🧹 สมัครเป็นฟรีแลนซ์</button>
+        </div>
+      </div>
+    </div>
+    <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">แพลตฟอร์มสำหรับคุณ</div>
+      <h1 class="hero-title">หาพยาบาลและแม่บ้าน<br />คุณภาพสูง ได้ง่ายๆ</h1>
+      <p class="hero-subtitle">เชื่อมต่อกับผู้ดูแลมืออาชีพที่ผ่านการตรวจสอบแล้ว</p>
+      <div class="hero-tags"><span>พยาบาล</span> • <span>พี่เลี้ยงเด็ก</span> • <span>ดูแลผู้สูงอายุ</span> •
+        <span>แม่บ้าน</span>
+      </div>
+      <div class="hero-cta">
+        <button class="btn btn-white btn-lg" onclick="location.href='pages/browse.html'">หาพนักงานตอนนี้</button>
+        <button class="btn btn-outline-white btn-lg"
+          onclick="location.href='pages/register.html'">สมัครเป็นฟรีแลนซ์</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>1,200+</strong><span>พนักงาน</span></div>
+        <div class="hero-stat"><strong>5,000+</strong><span>นายจ้าง</span></div>
+        <div class="hero-stat"><strong>4.9 ★</strong><span>คะแนน</span></div>
+        <div class="hero-stat"><strong>24/7</strong><span>ซัพพอร์ต</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section">
+    <div class="container">
+      <div style="text-align:center;">
+        <div class="section-title-sm">บริการของเรา</div>
+        <h2 class="section-title">บริการครบครัน ตรงใจคุณ</h2>
+        <p class="section-sub">เลือกประเภทผู้ช่วยที่คุณต้องการได้เลย</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" onclick="location.href='pages/browse.html'">
+          <img class="service-icon-img" src="icons/pro1.png" alt="พยาบาลวิชาชีพ" />
+          <div class="service-name">พยาบาลวิชาชีพ</div>
+          <div class="service-count">320+ คน พร้อมทำงาน</div>
+        </div>
+        <div class="service-card" onclick="location.href='pages/browse.html'">
+          <img class="service-icon-img" src="icons/pro3.png" alt="พยาบาลวิชาชีพ" />
+          <div class="service-name">พี่เลี้ยงเด็ก</div>
+          <div class="service-count">450+ คน พร้อมทำงาน</div>
+        </div>
+        <div class="service-card" onclick="location.href='pages/browse.html'">
+          <img class="service-icon-img" src="icons/pro4.png" alt="พยาบาลวิชาชีพ" />
+          <div class="service-name">ดูแลผู้สูงอายุ</div>
+          <div class="service-count">280+ คน พร้อมทำงาน</div>
+        </div>
+        <div class="service-card" onclick="location.href='pages/browse.html'">
+          <img class="service-icon-img" src="icons/pro2.png" alt="พยาบาลวิชาชีพ" />
+          <div class="service-name">แม่บ้าน</div>
+          <div class="service-count">190+ คน พร้อมทำงาน</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section how-section">
+    <div class="container">
+      <div style="text-align:center;">
+        <div class="section-title-sm">วิธีการใช้งาน</div>
+        <h2 class="section-title">ใช้งานง่าย 4 ขั้นตอน</h2>
+      </div>
+      <div class="steps-row">
+        <div class="step-item">
+          <div class="step-circle">1</div>
+          <div class="step-label">ค้นหา</div>
+          <div class="step-desc">ค้นหาพนักงานที่ตรงกับความต้องการของคุณ</div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">2</div>
+          <div class="step-label">ดูโปรไฟล์</div>
+          <div class="step-desc">ดูข้อมูล รีวิว และประสบการณ์การทำงาน</div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">3</div>
+          <div class="step-label">ติดต่อ</div>
+          <div class="step-desc">ส่งคำขอและนัดหมายผ่านระบบของเรา</div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">4</div>
+          <div class="step-label">เริ่มงาน</div>
+          <div class="step-desc">ยืนยันและเริ่มงานได้เลย ชำระเงินปลอดภัย</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED WORKERS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-title-sm">พนักงานแนะนำ</div>
+          <h2 class="section-title">พนักงานยอดนิยม</h2>
+          <p class="section-sub" style="margin-bottom:0;">คัดสรรมืออาชีพที่ผ่านการตรวจสอบแล้ว</p>
+        </div>
+        <a href="pages/browse.html" style="color:var(--blue);font-size:14px;font-weight:600;">ดูทั้งหมด →</a>
+      </div>
+      <div class="workers-row" id="home-workers"></div>
+    </div>
+  </section>
+
+  <!-- POST JOB BANNER -->
+  <section style="background:var(--gray-50);padding:48px 0;border-top:1px solid var(--gray-200);">
+    <div class="container" style="text-align:center;">
+      <div style="font-size:40px;margin-bottom:14px;">📢</div>
+      <h2 style="font-size:24px;color:var(--navy);margin-bottom:8px;">ต้องการประกาศหาคนรับงาน?</h2>
+      <p style="font-size:14px;color:var(--gray-500);margin-bottom:24px;">กำหนดงาน งบประมาณ และเงื่อนไข
+        ให้ผู้ดูแลที่เหมาะสมมายื่นข้อเสนอหาคุณ</p>
+      <button class="btn btn-primary btn-lg" onclick="location.href='pages/job-post.html'">📢 ประกาศหางานตอนนี้</button>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-banner">
+    <div class="container">
+      <h2>พร้อมเริ่มต้นแล้วใช่ไหม?</h2>
+      <p>เข้าร่วมกับนายจ้างและพนักงานกว่า 6,000+ คนบน CareYouGo</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">CareYouGo</div>
+          <p class="footer-desc">แพลตฟอร์มเชื่อมต่อนายจ้างกับพนักงานดูแลบ้านและผู้สูงอายุมืออาชีพ ปลอดภัย เชื่อถือได้
+          </p>
+        </div>
+        <div>
+          <div class="footer-col-title">บริการ</div>
+          <ul class="footer-links">
+            <li><a href="pages/browse.html">หาพยาบาล</a></li>
+            <li><a href="pages/browse.html">หาพี่เลี้ยงเด็ก</a></li>
+            <li><a href="pages/browse.html">ดูแลผู้สูงอายุ</a></li>
+            <li><a href="pages/job-post.html">ประกาศหางาน</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">บริษัท</div>
+          <ul class="footer-links">
+            <li><a href="pages/about.html">เกี่ยวกับเรา</a></li>
+            <li><a href="pages/about.html">ข่าวสาร</a></li>
+            <li><a href="pages/about.html">ร่วมงานกับเรา</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">ช่วยเหลือ</div>
+          <ul class="footer-links">
+            <li><a href="pages/terms.html">ข้อตกลงการใช้งาน</a></li>
+            <li><a href="pages/about.html">นโยบายความเป็นส่วนตัว</a></li>
+            <li><a href="#">ติดต่อเรา</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2025 CareYouGo. สงวนลิขสิทธิ์</div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    function toggleMenu() { document.querySelector('.navbar').classList.toggle('menu-open'); }
+
+    const WORKERS = [
+      { id: 1, init: 'ส', name: 'สมหญิง อินทรีตี', role: 'พยาบาลวิชาชีพ', rating: 4.9, rcount: 46, price: 350 },
+      { id: 2, init: 'น', name: 'นารี สุโก', role: 'พี่เลี้ยงเด็ก', rating: 4.8, rcount: 132, price: 250 },
+      { id: 3, init: 'ว', name: 'วีโอ กาวตี', role: 'ดูแลผู้สูงอายุ', rating: 5.0, rcount: 81, price: 300 },
+      { id: 4, init: 'ส', name: 'สดา เมฆใย', role: 'แม่บ้าน', rating: 4.7, rcount: 137, price: 200 },
+    ];
+    const COLORS = ['#C7E2FF', '#D1FAE5', '#FDE8CF', '#EDE9FE'];
+
+    function toast(msg) {
+      const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg;
+      document.body.appendChild(t); setTimeout(() => t.remove(), 2800);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const el = document.getElementById('home-workers');
+      el.innerHTML = WORKERS.map((w, i) => `
+    <div class="wcard" onclick="location.href='pages/profile.html'" style="cursor:pointer;">
+      <div class="wcard-avatar" style="background:${COLORS[i]};">${w.init}</div>
+      <div class="wcard-info">
+        <div class="wcard-name">${w.name}</div>
+        <div class="wcard-role">${w.role}</div>
+        <div class="wcard-rating"><span class="stars">★★★★★</span> ${w.rating} (${w.rcount})</div>
+        <div class="wcard-price">฿${w.price}<span>/ชม.</span></div>
+      </div>
+      <div class="wcard-actions">
+        <button class="btn btn-outline-gray btn-sm" onclick="event.stopPropagation();location.href='pages/profile.html'">โปรไฟล์</button>
+        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();toast('ส่งคำขอแล้ว! 📨')">ติดต่อ</button>
+      </div>
+    </div>
+  `).join('');
+    });
+  </script>
+</body>
+
+</html>
